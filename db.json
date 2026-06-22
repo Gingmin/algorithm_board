@@ -1,0 +1,146 @@
+{
+  "categories": [
+    { "id": "cat-array", "name": "배열 (Array)", "order": 1 },
+    { "id": "cat-string", "name": "문자열 (String)", "order": 2 },
+    { "id": "cat-sort", "name": "정렬 (Sorting)", "order": 3 },
+    { "id": "cat-stack", "name": "스택/큐 (Stack/Queue)", "order": 4 },
+    { "id": "cat-tree", "name": "트리 (Tree)", "order": 5 }
+  ],
+  "problems": [
+    {
+      "id": "prob-two-sum",
+      "categoryId": "cat-array",
+      "title": "두 수의 합 (Two Sum)",
+      "content": "## 문제\n\n정수 배열 `nums`와 정수 `target`이 주어졌을 때, 합이 `target`이 되는 두 수의 **인덱스**를 반환하세요.\n\n각 입력에는 **정확히 하나의 해**가 있다고 가정하며, 같은 요소를 두 번 사용할 수 없습니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums = [2, 7, 11, 15], target = 9 | [0, 1] |\n| nums = [3, 2, 4], target = 6 | [1, 2] |\n| nums = [3, 3], target = 6 | [0, 1] |\n\n## 제약 조건\n\n- `2 <= nums.length <= 10^4`\n- `-10^9 <= nums[i] <= 10^9`\n- `-10^9 <= target <= 10^9`\n\n## 힌트\n\nHash Map을 사용하면 O(n) 시간에 풀 수 있습니다.",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums, target) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        { "id": "tc1", "input": "[[2, 7, 11, 15], 9]", "expectedOutput": "[0, 1]" },
+        { "id": "tc2", "input": "[[3, 2, 4], 6]", "expectedOutput": "[1, 2]" },
+        { "id": "tc3", "input": "[[3, 3], 6]", "expectedOutput": "[0, 1]" }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-rotate-array",
+      "categoryId": "cat-array",
+      "title": "배열 회전 (Rotate Array)",
+      "content": "## 문제\n\n정수 배열 `nums`를 오른쪽으로 `k`칸만큼 회전시킨 결과를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums = [1,2,3,4,5,6,7], k = 3 | [5,6,7,1,2,3,4] |\n| nums = [-1,-100,3,99], k = 2 | [3,99,-1,-100] |\n\n## 제약 조건\n\n- `1 <= nums.length <= 10^5`\n- `0 <= k`\n\n## 힌트\n\n`k`가 배열 길이보다 클 수 있으므로 `k % nums.length`를 사용하세요.",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        { "id": "tc1", "input": "[[1,2,3,4,5,6,7], 3]", "expectedOutput": "[5,6,7,1,2,3,4]" },
+        { "id": "tc2", "input": "[[-1,-100,3,99], 2]", "expectedOutput": "[3,99,-1,-100]" },
+        { "id": "tc3", "input": "[[1,2], 3]", "expectedOutput": "[2,1]" }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-palindrome",
+      "categoryId": "cat-string",
+      "title": "팰린드롬 확인 (Palindrome Check)",
+      "content": "## 문제\n\n주어진 문자열 `s`가 팰린드롬(앞뒤가 같은 문자열)인지 확인하세요.\n\n영문 소문자와 숫자만 고려하고, 대소문자는 구분하지 않습니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"A man, a plan, a canal: Panama\" | true |\n| \"race a car\" | false |\n| \" \" | true |\n\n## 제약 조건\n\n- `1 <= s.length <= 2 * 10^5`\n- 문자열은 ASCII 문자로만 구성됩니다.",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        { "id": "tc1", "input": "[\"A man, a plan, a canal: Panama\"]", "expectedOutput": "true" },
+        { "id": "tc2", "input": "[\"race a car\"]", "expectedOutput": "false" },
+        { "id": "tc3", "input": "[\" \"]", "expectedOutput": "true" }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-reverse-string",
+      "categoryId": "cat-string",
+      "title": "문자열 뒤집기 (Reverse String)",
+      "content": "## 문제\n\n문자 배열 `s`가 주어지면, 문자열을 뒤집어서 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"h\",\"e\",\"l\",\"l\",\"o\"] | [\"o\",\"l\",\"l\",\"e\",\"h\"] |\n| [\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"] | [\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"] |\n\n## 제약 조건\n\n- `1 <= s.length <= 10^5`\n\n## 힌트\n\n추가 배열 할당 없이 O(1) 공간에서 풀어보세요 (투 포인터).",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 5,
+      "performanceLimit": 20,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        { "id": "tc1", "input": "[[\"h\",\"e\",\"l\",\"l\",\"o\"]]", "expectedOutput": "[\"o\",\"l\",\"l\",\"e\",\"h\"]" },
+        { "id": "tc2", "input": "[[\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]]", "expectedOutput": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]" }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-bubble-sort",
+      "categoryId": "cat-sort",
+      "title": "버블 정렬 (Bubble Sort)",
+      "content": "## 문제\n\n정수 배열 `nums`가 주어지면, **버블 정렬** 알고리즘을 사용하여 오름차순으로 정렬된 배열을 반환하세요.\n\n## 버블 정렬이란?\n\n인접한 두 원소를 비교하여 순서가 잘못되어 있으면 서로 교환하는 정렬 알고리즘입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [64, 34, 25, 12, 22, 11, 90] | [11, 12, 22, 25, 34, 64, 90] |\n| [5, 1, 4, 2, 8] | [1, 2, 4, 5, 8] |\n\n## 제약 조건\n\n- `1 <= nums.length <= 10^4`\n- 내장 정렬 함수 사용 금지",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 100,
+      "template": "function solution(nums) {\n  // 버블 정렬을 구현하세요\n  \n}",
+      "testCases": [
+        { "id": "tc1", "input": "[[64, 34, 25, 12, 22, 11, 90]]", "expectedOutput": "[11,12,22,25,34,64,90]" },
+        { "id": "tc2", "input": "[[5, 1, 4, 2, 8]]", "expectedOutput": "[1,2,4,5,8]" },
+        { "id": "tc3", "input": "[[1]]", "expectedOutput": "[1]" }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-valid-parentheses",
+      "categoryId": "cat-stack",
+      "title": "유효한 괄호 (Valid Parentheses)",
+      "content": "## 문제\n\n`(`, `)`, `{`, `}`, `[`, `]`로만 구성된 문자열 `s`가 주어졌을 때, 문자열이 유효한지 판별하세요.\n\n유효한 문자열은:\n1. 열린 괄호는 같은 종류의 닫힌 괄호로 닫혀야 합니다.\n2. 열린 괄호는 올바른 순서로 닫혀야 합니다.\n3. 모든 닫힌 괄호에는 대응하는 열린 괄호가 있어야 합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"()\" | true |\n| \"()[]{}\" | true |\n| \"(]\" | false |\n| \"([)]\" | false |\n| \"{[]}\" | true |\n\n## 제약 조건\n\n- `1 <= s.length <= 10^4`",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        { "id": "tc1", "input": "[\"()\"]", "expectedOutput": "true" },
+        { "id": "tc2", "input": "[\"()[]{}\"]", "expectedOutput": "true" },
+        { "id": "tc3", "input": "[\"(]\"]", "expectedOutput": "false" },
+        { "id": "tc4", "input": "[\"([)]\"]", "expectedOutput": "false" },
+        { "id": "tc5", "input": "[\"{[]}\"]", "expectedOutput": "true" }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-max-depth",
+      "categoryId": "cat-tree",
+      "title": "이진 트리 최대 깊이 (Max Depth)",
+      "content": "## 문제\n\n이진 트리가 배열 형태로 주어졌을 때 (BFS 순서, null은 빈 노드), 트리의 **최대 깊이**를 반환하세요.\n\n최대 깊이란 루트 노드에서 가장 먼 리프 노드까지의 경로에 있는 노드 수입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [3, 9, 20, null, null, 15, 7] | 3 |\n| [1, null, 2] | 2 |\n| [] | 0 |\n\n## 제약 조건\n\n- 노드 수: `0 <= n <= 10^4`\n\n## 힌트\n\n배열에서 트리를 구성한 후 재귀적으로 깊이를 계산하세요.",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(tree) {\n  // tree는 BFS 순서의 배열입니다 (null은 빈 노드)\n  // 최대 깊이를 반환하세요\n  \n}",
+      "testCases": [
+        { "id": "tc1", "input": "[[3, 9, 20, null, null, 15, 7]]", "expectedOutput": "3" },
+        { "id": "tc2", "input": "[[1, null, 2]]", "expectedOutput": "2" },
+        { "id": "tc3", "input": "[[]]", "expectedOutput": "0" }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    }
+  ],
+  "attempts": []
+}
