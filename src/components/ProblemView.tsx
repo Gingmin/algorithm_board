@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useBlocker } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { api } from "../api";
@@ -122,6 +122,8 @@ export default function ProblemView() {
     const [showMemo, setShowMemo] = useState(false);
     const [activeTab, setActiveTab] = useState<"results" | "history">("results");
     const timeRef = useRef(0);
+    const [timerRunning, setTimerRunning] = useState(false);
+    const [codeModified, setCodeModified] = useState(false);
 
     useEffect(() => {
         if (!id) {
@@ -134,16 +136,52 @@ export default function ProblemView() {
             setMemo(p.memo || "");
             setAttempts(a);
             setTestResults([]);
+            setTotalExecTime(0);
+            setCodeModified(false);
+            timeRef.current = 0;
         });
     }, [id]);
+
+    const isWorking = timerRunning || codeModified;
+
+    useBlocker(({ currentLocation, nextLocation }) => {
+        if (!isWorking) return false;
+        if (currentLocation.pathname === nextLocation.pathname) return false;
+        return !window.confirm("풀이가 진행 중입니다. 정말 이동하시겠습니까?\n(타이머와 작성 중인 코드가 초기화됩니다)");
+    });
+
+    useEffect(() => {
+        if (!isWorking) return;
+        const handler = (e: BeforeUnloadEvent) => {
+            e.preventDefault();
+        };
+        window.addEventListener("beforeunload", handler);
+        return () => window.removeEventListener("beforeunload", handler);
+    }, [isWorking]);
 
     const handleTimeUpdate = useCallback((s: number) => {
         timeRef.current = s;
     }, []);
 
+    const handleTimerRunningChange = useCallback((r: boolean) => {
+        setTimerRunning(r);
+    }, []);
+
+    const handleCodeChange = useCallback(
+        (value: string) => {
+            setCode(value);
+            if (problem && value !== problem.template) {
+                setCodeModified(true);
+            }
+        },
+        [problem],
+    );
+
     const handleRun = async () => {
         if (!problem) return;
         setRunning(true);
+        setTestResults([]);
+        setTotalExecTime(0);
         const result = await runCode(code, problem.testCases);
         setTestResults(result.testResults);
         setTotalExecTime(result.totalTime);
@@ -154,6 +192,8 @@ export default function ProblemView() {
     const handleSubmit = async () => {
         if (!problem) return;
         setRunning(true);
+        setTestResults([]);
+        setTotalExecTime(0);
         const result = await runCode(code, problem.testCases);
         setTestResults(result.testResults);
         setTotalExecTime(result.totalTime);
@@ -277,7 +317,7 @@ export default function ProblemView() {
 
                 {/* Timer + Actions */}
                 <div className="flex items-center justify-between">
-                    <Timer onTimeUpdate={handleTimeUpdate} timeLimit={problem.timeLimit} />
+                    <Timer key={id} onTimeUpdate={handleTimeUpdate} onRunningChange={handleTimerRunningChange} timeLimit={problem.timeLimit} />
                     <div className="flex gap-2">
                         <button
                             onClick={handleRun}
@@ -297,7 +337,7 @@ export default function ProblemView() {
                 </div>
 
                 {/* Code Editor */}
-                <CodeEditor value={code} onChange={setCode} language={problem.language} height="350px" />
+                <CodeEditor value={code} onChange={handleCodeChange} language={problem.language} height="350px" />
 
                 {/* Tabs */}
                 <div>

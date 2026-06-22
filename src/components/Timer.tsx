@@ -2,25 +2,28 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 interface TimerProps {
     onTimeUpdate?: (seconds: number) => void;
+    onRunningChange?: (running: boolean) => void;
     timeLimit?: number;
 }
 
-export default function Timer({ onTimeUpdate, timeLimit }: TimerProps) {
+export default function Timer({ onTimeUpdate, onRunningChange, timeLimit }: TimerProps) {
     const [seconds, setSeconds] = useState(0);
     const [running, setRunning] = useState(false);
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     const stop = useCallback(() => {
         setRunning(false);
+        onRunningChange?.(false);
         if (intervalRef.current) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
         }
-    }, []);
+    }, [onRunningChange]);
 
     const start = useCallback(() => {
         setRunning(true);
-    }, []);
+        onRunningChange?.(true);
+    }, [onRunningChange]);
 
     const reset = useCallback(() => {
         stop();
@@ -42,6 +45,12 @@ export default function Timer({ onTimeUpdate, timeLimit }: TimerProps) {
             if (intervalRef.current) clearInterval(intervalRef.current);
         };
     }, [running, onTimeUpdate]);
+
+    useEffect(() => {
+        return () => {
+            onRunningChange?.(false);
+        };
+    }, [onRunningChange]);
 
     const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
     const ss = String(seconds % 60).padStart(2, "0");

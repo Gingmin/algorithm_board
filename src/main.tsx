@@ -1,16 +1,27 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import App from './App';
+import Layout from './components/Layout';
+import ProblemView from './components/ProblemView';
+import AdminPage from './components/AdminPage';
+import Dashboard from './components/Dashboard';
 import './index.css';
+
+const router = createBrowserRouter([
+  {
+    element: <ThemeProvider><Layout /></ThemeProvider>,
+    children: [
+      { path: '/', element: <ProblemView /> },
+      { path: '/problem/:id', element: <ProblemView /> },
+      { path: '/admin', element: <AdminPage /> },
+      { path: '/dashboard', element: <Dashboard /> },
+    ],
+  },
+]);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </StrictMode>,
 );

@@ -1,10 +1,30 @@
 {
   "categories": [
-    { "id": "cat-array", "name": "배열 (Array)", "order": 1 },
-    { "id": "cat-string", "name": "문자열 (String)", "order": 2 },
-    { "id": "cat-sort", "name": "정렬 (Sorting)", "order": 3 },
-    { "id": "cat-stack", "name": "스택/큐 (Stack/Queue)", "order": 4 },
-    { "id": "cat-tree", "name": "트리 (Tree)", "order": 5 }
+    {
+      "id": "cat-array",
+      "name": "배열 (Array)",
+      "order": 1
+    },
+    {
+      "id": "cat-string",
+      "name": "문자열 (String)",
+      "order": 2
+    },
+    {
+      "id": "cat-sort",
+      "name": "정렬 (Sorting)",
+      "order": 3
+    },
+    {
+      "id": "cat-stack",
+      "name": "스택/큐 (Stack/Queue)",
+      "order": 4
+    },
+    {
+      "id": "cat-tree",
+      "name": "트리 (Tree)",
+      "order": 5
+    }
   ],
   "problems": [
     {
@@ -18,9 +38,21 @@
       "performanceLimit": 50,
       "template": "function solution(nums, target) {\n  // 여기에 코드를 작성하세요\n  \n}",
       "testCases": [
-        { "id": "tc1", "input": "[[2, 7, 11, 15], 9]", "expectedOutput": "[0, 1]" },
-        { "id": "tc2", "input": "[[3, 2, 4], 6]", "expectedOutput": "[1, 2]" },
-        { "id": "tc3", "input": "[[3, 3], 6]", "expectedOutput": "[0, 1]" }
+        {
+          "id": "tc1",
+          "input": "[[2, 7, 11, 15], 9]",
+          "expectedOutput": "[0, 1]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[3, 2, 4], 6]",
+          "expectedOutput": "[1, 2]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[3, 3], 6]",
+          "expectedOutput": "[0, 1]"
+        }
       ],
       "bookmarked": false,
       "memo": "",
@@ -37,9 +69,21 @@
       "performanceLimit": 50,
       "template": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  \n}",
       "testCases": [
-        { "id": "tc1", "input": "[[1,2,3,4,5,6,7], 3]", "expectedOutput": "[5,6,7,1,2,3,4]" },
-        { "id": "tc2", "input": "[[-1,-100,3,99], 2]", "expectedOutput": "[3,99,-1,-100]" },
-        { "id": "tc3", "input": "[[1,2], 3]", "expectedOutput": "[2,1]" }
+        {
+          "id": "tc1",
+          "input": "[[1,2,3,4,5,6,7], 3]",
+          "expectedOutput": "[5,6,7,1,2,3,4]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[-1,-100,3,99], 2]",
+          "expectedOutput": "[3,99,-1,-100]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1,2], 3]",
+          "expectedOutput": "[2,1]"
+        }
       ],
       "bookmarked": false,
       "memo": "",
@@ -56,9 +100,21 @@
       "performanceLimit": 30,
       "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
       "testCases": [
-        { "id": "tc1", "input": "[\"A man, a plan, a canal: Panama\"]", "expectedOutput": "true" },
-        { "id": "tc2", "input": "[\"race a car\"]", "expectedOutput": "false" },
-        { "id": "tc3", "input": "[\" \"]", "expectedOutput": "true" }
+        {
+          "id": "tc1",
+          "input": "[\"A man, a plan, a canal: Panama\"]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"race a car\"]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[\" \"]",
+          "expectedOutput": "true"
+        }
       ],
       "bookmarked": false,
       "memo": "",
@@ -75,8 +131,16 @@
       "performanceLimit": 20,
       "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
       "testCases": [
-        { "id": "tc1", "input": "[[\"h\",\"e\",\"l\",\"l\",\"o\"]]", "expectedOutput": "[\"o\",\"l\",\"l\",\"e\",\"h\"]" },
-        { "id": "tc2", "input": "[[\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]]", "expectedOutput": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]" }
+        {
+          "id": "tc1",
+          "input": "[[\"h\",\"e\",\"l\",\"l\",\"o\"]]",
+          "expectedOutput": "[\"o\",\"l\",\"l\",\"e\",\"h\"]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]]",
+          "expectedOutput": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]"
+        }
       ],
       "bookmarked": false,
       "memo": "",
@@ -93,9 +157,21 @@
       "performanceLimit": 100,
       "template": "function solution(nums) {\n  // 버블 정렬을 구현하세요\n  \n}",
       "testCases": [
-        { "id": "tc1", "input": "[[64, 34, 25, 12, 22, 11, 90]]", "expectedOutput": "[11,12,22,25,34,64,90]" },
-        { "id": "tc2", "input": "[[5, 1, 4, 2, 8]]", "expectedOutput": "[1,2,4,5,8]" },
-        { "id": "tc3", "input": "[[1]]", "expectedOutput": "[1]" }
+        {
+          "id": "tc1",
+          "input": "[[64, 34, 25, 12, 22, 11, 90]]",
+          "expectedOutput": "[11,12,22,25,34,64,90]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[5, 1, 4, 2, 8]]",
+          "expectedOutput": "[1,2,4,5,8]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "[1]"
+        }
       ],
       "bookmarked": false,
       "memo": "",
@@ -112,11 +188,31 @@
       "performanceLimit": 30,
       "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
       "testCases": [
-        { "id": "tc1", "input": "[\"()\"]", "expectedOutput": "true" },
-        { "id": "tc2", "input": "[\"()[]{}\"]", "expectedOutput": "true" },
-        { "id": "tc3", "input": "[\"(]\"]", "expectedOutput": "false" },
-        { "id": "tc4", "input": "[\"([)]\"]", "expectedOutput": "false" },
-        { "id": "tc5", "input": "[\"{[]}\"]", "expectedOutput": "true" }
+        {
+          "id": "tc1",
+          "input": "[\"()\"]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"()[]{}\"]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"(]\"]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc4",
+          "input": "[\"([)]\"]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc5",
+          "input": "[\"{[]}\"]",
+          "expectedOutput": "true"
+        }
       ],
       "bookmarked": false,
       "memo": "",
@@ -133,14 +229,211 @@
       "performanceLimit": 50,
       "template": "function solution(tree) {\n  // tree는 BFS 순서의 배열입니다 (null은 빈 노드)\n  // 최대 깊이를 반환하세요\n  \n}",
       "testCases": [
-        { "id": "tc1", "input": "[[3, 9, 20, null, null, 15, 7]]", "expectedOutput": "3" },
-        { "id": "tc2", "input": "[[1, null, 2]]", "expectedOutput": "2" },
-        { "id": "tc3", "input": "[[]]", "expectedOutput": "0" }
+        {
+          "id": "tc1",
+          "input": "[[3, 9, 20, null, null, 15, 7]]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1, null, 2]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc3",
+          "input": "[[]]",
+          "expectedOutput": "0"
+        }
       ],
       "bookmarked": false,
       "memo": "",
       "createdAt": "2026-06-22T00:00:00.000Z"
     }
   ],
-  "attempts": []
+  "attempts": [
+    {
+      "problemId": "prob-two-sum",
+      "attemptNumber": 1,
+      "code": "function solution(nums, target) {\n  // 여기에 코드를 작성하세요\n  const map = new HashMap();\n\n  for (i = 0; i < nums.length; i++) {\n\n    const en = target - nums[i];\n\n    if (map.has(en)) {\n      return [map.get(en), i];\n    }\n\n    map.set(nums[i], i);\n  }\n}",
+      "timeSpent": 169,
+      "executionTime": 0,
+      "passed": false,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[2, 7, 11, 15], 9]",
+          "expected": "[0, 1]",
+          "actual": "",
+          "passed": false,
+          "executionTime": 0,
+          "error": "ReferenceError: HashMap is not defined"
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[3, 2, 4], 6]",
+          "expected": "[1, 2]",
+          "actual": "",
+          "passed": false,
+          "executionTime": 0,
+          "error": "ReferenceError: HashMap is not defined"
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[3, 3], 6]",
+          "expected": "[0, 1]",
+          "actual": "",
+          "passed": false,
+          "executionTime": 0,
+          "error": "ReferenceError: HashMap is not defined"
+        }
+      ],
+      "submittedAt": "2026-06-22T01:37:25.833Z",
+      "id": "FrHZDvuuWSY"
+    },
+    {
+      "problemId": "prob-two-sum",
+      "attemptNumber": 2,
+      "code": "function solution(nums, target) {\n  // 여기에 코드를 작성하세요\n  const map = new Map();\n\n  for (let i = 0; i < nums.length; i++) {\n    const en = target - nums[i];\n\n    if (map.has(en)) {\n      return [map.get(en), i];\n    }\n\n    map.set(nums[i], i);\n  }\n}",
+      "timeSpent": 77,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[2, 7, 11, 15], 9]",
+          "expected": "[0,1]",
+          "actual": "[0,1]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[3, 2, 4], 6]",
+          "expected": "[1,2]",
+          "actual": "[1,2]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[3, 3], 6]",
+          "expected": "[0,1]",
+          "actual": "[0,1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-22T01:52:29.655Z",
+      "id": "NUk-wg9l_1o"
+    },
+    {
+      "problemId": "prob-rotate-array",
+      "attemptNumber": 1,
+      "code": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  const rm = k % nums.length;\n\n  const arr = Array.from({ length: nums.length }, () => 0);\n\n  for (let i = 0; i < nums.length; i++) {\n    if (i + rm >= nums.length) {\n      arr[i + rm - nums.length] = nums[i];\n    } else {\n      arr[i + rm] = nums[i];\n    }\n  }\n  return arr;\n}",
+      "timeSpent": 1720,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,2,3,4,5,6,7], 3]",
+          "expected": "[5,6,7,1,2,3,4]",
+          "actual": "[5,6,7,1,2,3,4]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[-1,-100,3,99], 2]",
+          "expected": "[3,99,-1,-100]",
+          "actual": "[3,99,-1,-100]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1,2], 3]",
+          "expected": "[2,1]",
+          "actual": "[2,1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-22T02:43:01.096Z",
+      "id": "YHPtxX4qCBM"
+    },
+    {
+      "problemId": "prob-rotate-array",
+      "attemptNumber": 2,
+      "code": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  const rm = k % nums.length;\n  return [...nums.slice(-rm), ...nums.slice(0, nums.length - rm)];\n}",
+      "timeSpent": 1799,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,2,3,4,5,6,7], 3]",
+          "expected": "[5,6,7,1,2,3,4]",
+          "actual": "[5,6,7,1,2,3,4]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[-1,-100,3,99], 2]",
+          "expected": "[3,99,-1,-100]",
+          "actual": "[3,99,-1,-100]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1,2], 3]",
+          "expected": "[2,1]",
+          "actual": "[2,1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-22T02:44:20.202Z",
+      "id": "3IzEuY8YtDg"
+    },
+    {
+      "problemId": "prob-rotate-array",
+      "attemptNumber": 3,
+      "code": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  const rm = k % nums.length;\n  if (rm === 0) {\n    return [...nums];\n  }\n  return [...nums.slice(-rm), ...nums.slice(0, nums.length - rm)];\n}",
+      "timeSpent": 1890,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,2,3,4,5,6,7], 3]",
+          "expected": "[5,6,7,1,2,3,4]",
+          "actual": "[5,6,7,1,2,3,4]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[-1,-100,3,99], 2]",
+          "expected": "[3,99,-1,-100]",
+          "actual": "[3,99,-1,-100]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1,2], 3]",
+          "expected": "[2,1]",
+          "actual": "[2,1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-22T02:47:16.935Z",
+      "id": "rGFLkKxB1oE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
