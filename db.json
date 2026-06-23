@@ -24,6 +24,31 @@
       "id": "cat-tree",
       "name": "트리 (Tree)",
       "order": 5
+    },
+    {
+      "id": "cat-hash",
+      "name": "해시 (Hash Map)",
+      "order": 6
+    },
+    {
+      "id": "cat-search",
+      "name": "탐색 (Search)",
+      "order": 7
+    },
+    {
+      "id": "cat-dp",
+      "name": "동적 프로그래밍 (DP)",
+      "order": 8
+    },
+    {
+      "id": "cat-graph",
+      "name": "그래프 (Graph)",
+      "order": 9
+    },
+    {
+      "id": "cat-math",
+      "name": "수학 (Math)",
+      "order": 10
     }
   ],
   "problems": [
@@ -31,7 +56,7 @@
       "id": "prob-two-sum",
       "categoryId": "cat-array",
       "title": "두 수의 합 (Two Sum)",
-      "content": "## 문제\n\n정수 배열 `nums`와 정수 `target`이 주어졌을 때, 합이 `target`이 되는 두 수의 **인덱스**를 반환하세요.\n\n각 입력에는 **정확히 하나의 해**가 있다고 가정하며, 같은 요소를 두 번 사용할 수 없습니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums = [2, 7, 11, 15], target = 9 | [0, 1] |\n| nums = [3, 2, 4], target = 6 | [1, 2] |\n| nums = [3, 3], target = 6 | [0, 1] |\n\n## 제약 조건\n\n- `2 <= nums.length <= 10^4`\n- `-10^9 <= nums[i] <= 10^9`\n- `-10^9 <= target <= 10^9`\n\n## 힌트\n\nHash Map을 사용하면 O(n) 시간에 풀 수 있습니다.",
+      "content": "## 문제\n\n정수 배열 `nums`와 정수 `target`이 주어졌을 때, 합이 `target`이 되는 두 수의 **인덱스**를 반환하세요.\n\n각 입력에는 **정확히 하나의 해**가 있다고 가정하며, 같은 요소를 두 번 사용할 수 없습니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums = [2, 7, 11, 15], target = 9 | [0, 1] |\n| nums = [3, 2, 4], target = 6 | [1, 2] |\n| nums = [3, 3], target = 6 | [0, 1] |\n\n## 제약 조건\n\n- `2 <= nums.length <= 10^4`\n- `-10^9 <= nums[i] <= 10^9`\n\n## 힌트\n\nHash Map을 사용하면 O(n) 시간에 풀 수 있습니다.",
       "language": "javascript",
       "difficulty": 1,
       "timeLimit": 15,
@@ -90,10 +115,643 @@
       "createdAt": "2026-06-22T00:00:00.000Z"
     },
     {
+      "id": "prob-remove-duplicates",
+      "categoryId": "cat-array",
+      "title": "중복 제거 (Remove Duplicates)",
+      "content": "## 문제\n\n정렬된 정수 배열 `nums`에서 중복을 제거한 새 배열을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,1,2] | [1,2] |\n| [0,0,1,1,1,2,2,3,3,4] | [0,1,2,3,4] |\n\n## 제약 조건\n\n- `1 <= nums.length <= 3 * 10^4`\n- `-100 <= nums[i] <= 100`\n- 배열은 오름차순 정렬되어 있습니다.",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,1,2]]",
+          "expectedOutput": "[1,2]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[0,0,1,1,1,2,2,3,3,4]]",
+          "expectedOutput": "[0,1,2,3,4]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "[1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-max-subarray",
+      "categoryId": "cat-array",
+      "title": "최대 부분합 (Maximum Subarray)",
+      "content": "## 문제\n\n정수 배열 `nums`가 주어졌을 때, 합이 최대인 연속 부분 배열의 합을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [-2,1,-3,4,-1,2,1,-5,4] | 6 |\n| [1] | 1 |\n| [5,4,-1,7,8] | 23 |\n\n설명: [4,-1,2,1]의 합이 6으로 최대입니다.\n\n## 제약 조건\n\n- `1 <= nums.length <= 10^5`\n\n## 힌트\n\nKadane's Algorithm을 사용하면 O(n)에 풀 수 있습니다.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[-2,1,-3,4,-1,2,1,-5,4]]",
+          "expectedOutput": "6"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc3",
+          "input": "[[5,4,-1,7,8]]",
+          "expectedOutput": "23"
+        },
+        {
+          "id": "tc4",
+          "input": "[[-1]]",
+          "expectedOutput": "-1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-max-product-subarray",
+      "categoryId": "cat-array",
+      "title": "최대 부분 배열의 곱 (Maximum Product Subarray)",
+      "content": "## 문제\n\n정수 배열 `nums`에서 곱이 최대인 연속 부분 배열의 곱을 반환하세요.\n\n## 핵심 포인트\n\n음수 × 음수 = 양수이므로, **현재까지의 최솟값도 함께 추적**해야 합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [2,3,-2,4] | 6 |\n| [-2,0,-1] | 0 |\n| [-2,3,-4] | 24 |\n\n설명: [2,3]의 곱 6 / [-2,3,-4]의 곱 24\n\n## 제약 조건\n\n- `1 <= nums.length <= 2 * 10^4`\n- `-10 <= nums[i] <= 10`\n\n## 힌트\n\nKadane 변형: 각 단계에서 `curMax`와 `curMin`을 동시에 갱신하세요. 음수를 만나면 max와 min이 뒤집힙니다.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // curMax, curMin을 동시에 추적하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[2,3,-2,4]]",
+          "expectedOutput": "6"
+        },
+        {
+          "id": "tc2",
+          "input": "[[-2,0,-1]]",
+          "expectedOutput": "0"
+        },
+        {
+          "id": "tc3",
+          "input": "[[-2,3,-4]]",
+          "expectedOutput": "24"
+        },
+        {
+          "id": "tc4",
+          "input": "[[-2]]",
+          "expectedOutput": "-2"
+        },
+        {
+          "id": "tc5",
+          "input": "[[0,2]]",
+          "expectedOutput": "2"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-max-subarray-indices",
+      "categoryId": "cat-array",
+      "title": "최대 부분합 인덱스 (Max Subarray with Indices)",
+      "content": "## 문제\n\n정수 배열 `nums`에서 합이 최대인 연속 부분 배열의 **[시작 인덱스, 끝 인덱스, 최대 합]** 을 반환하세요.\n\n여러 답이 가능하면 가장 앞쪽(시작 인덱스가 작은)을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [-2,1,-3,4,-1,2,1,-5,4] | [3, 6, 6] |\n| [1] | [0, 0, 1] |\n| [5,4,-1,7,8] | [0, 4, 23] |\n\n설명: nums[3..6] = [4,-1,2,1], 합 = 6\n\n## 힌트\n\nKadane's Algorithm에서 시작/끝 인덱스를 함께 추적하세요. 현재 합이 음수가 되면 시작 인덱스를 갱신합니다.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // [startIndex, endIndex, maxSum]을 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[-2,1,-3,4,-1,2,1,-5,4]]",
+          "expectedOutput": "[3,6,6]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1]]",
+          "expectedOutput": "[0,0,1]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[5,4,-1,7,8]]",
+          "expectedOutput": "[0,4,23]"
+        },
+        {
+          "id": "tc4",
+          "input": "[[-1,-2,-3]]",
+          "expectedOutput": "[0,0,-1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-circular-max-subarray",
+      "categoryId": "cat-array",
+      "title": "원형 배열 최대 부분합 (Circular Subarray Sum)",
+      "content": "## 문제\n\n원형 정수 배열 `nums`에서 합이 최대인 비어있지 않은 부분 배열의 합을 반환하세요.\n\n원형 배열이므로 마지막 원소 다음에 첫 번째 원소가 연결됩니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,-2,3,-2] | 3 |\n| [5,-3,5] | 10 |\n| [-3,-2,-3] | -2 |\n\n설명:\n- [1,-2,3,-2]: 부분배열 [3]이 최대\n- [5,-3,5]: 원형으로 [5,5]를 선택 (= 전체합 - 최소부분합)\n\n## 핵심 아이디어\n\n원형 부분배열의 최대합 = max(일반 Kadane 최대합, 전체합 - 최소부분합)\n\n단, 모든 원소가 음수이면 일반 Kadane 결과를 사용합니다.\n\n## 힌트\n\n`maxSum`과 `minSum`을 동시에 구한 뒤, `total - minSum`과 `maxSum` 중 큰 값을 선택하세요.",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // 원형 배열에서의 최대 부분합을 구하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,-2,3,-2]]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[[5,-3,5]]",
+          "expectedOutput": "10"
+        },
+        {
+          "id": "tc3",
+          "input": "[[-3,-2,-3]]",
+          "expectedOutput": "-2"
+        },
+        {
+          "id": "tc4",
+          "input": "[[3,-1,2,-1]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc5",
+          "input": "[[3,-2,2,-3]]",
+          "expectedOutput": "3"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-merge-intervals",
+      "categoryId": "cat-array",
+      "title": "구간 합치기 (Merge Intervals)",
+      "content": "## 문제\n\n구간들의 배열 `intervals`가 주어졌을 때 (`intervals[i] = [start, end]`), 겹치는 구간을 모두 합치고 합친 결과를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[1,3],[2,6],[8,10],[15,18]] | [[1,6],[8,10],[15,18]] |\n| [[1,4],[4,5]] | [[1,5]] |\n\n## 제약 조건\n\n- `1 <= intervals.length <= 10^4`\n\n## 힌트\n\n시작점 기준으로 정렬한 뒤 순회하세요.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(intervals) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[1,3],[2,6],[8,10],[15,18]]]",
+          "expectedOutput": "[[1,6],[8,10],[15,18]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[1,4],[4,5]]]",
+          "expectedOutput": "[[1,5]]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[[1,4],[2,3]]]",
+          "expectedOutput": "[[1,4]]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-insert-interval",
+      "categoryId": "cat-array",
+      "title": "구간 삽입 (Insert Interval)",
+      "content": "## 문제\n\n겹치지 않고 시작점 기준으로 정렬된 구간 배열 `intervals`와 새 구간 `newInterval`이 주어졌을 때, `newInterval`을 삽입하고 겹치는 구간을 합쳐서 반환하세요.\n\n결과도 겹치지 않고 정렬된 상태여야 합니다.\n\n## 예시\n\n| intervals | newInterval | 출력 |\n|-----------|-------------|------|\n| [[1,3],[6,9]] | [2,5] | [[1,5],[6,9]] |\n| [[1,2],[3,5],[6,7],[8,10],[12,16]] | [4,8] | [[1,2],[3,10],[12,16]] |\n| [] | [5,7] | [[5,7]] |\n\n## 제약 조건\n\n- `0 <= intervals.length <= 10^4`\n- `intervals`는 이미 정렬되어 있음\n\n## 힌트\n\n세 구간으로 나눠 생각하세요: newInterval 앞쪽, 겹치는 구간(합치기), newInterval 뒤쪽.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(intervals, newInterval) {\n  // 새 구간을 삽입하고 겹치는 구간을 합치세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[1,3],[6,9]],[2,5]]",
+          "expectedOutput": "[[1,5],[6,9]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[1,2],[3,5],[6,7],[8,10],[12,16]],[4,8]]",
+          "expectedOutput": "[[1,2],[3,10],[12,16]]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[],[5,7]]",
+          "expectedOutput": "[[5,7]]"
+        },
+        {
+          "id": "tc4",
+          "input": "[[[1,5]],[2,3]]",
+          "expectedOutput": "[[1,5]]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-meeting-rooms",
+      "categoryId": "cat-array",
+      "title": "회의실 배정 (Meeting Rooms)",
+      "content": "## 문제\n\n회의 시간 배열 `intervals`가 주어졌을 때 (`intervals[i] = [start, end]`), 모든 회의에 참석하려면 **최소 몇 개의 회의실**이 필요한지 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[0,30],[5,10],[15,20]] | 2 |\n| [[7,10],[2,4]] | 1 |\n| [[1,5],[2,6],[3,7],[4,8]] | 4 |\n| [[1,3],[3,6]] | 1 |\n\n설명:\n- [[0,30],[5,10],[15,20]]: [5,10]과 [15,20]이 [0,30]과 겹치므로 2개 필요\n- [[7,10],[2,4]]: 겹치지 않으므로 1개\n\n## 힌트\n\n시작 시간과 끝 시간을 분리해서 각각 정렬한 뒤, 투 포인터로 동시에 진행 중인 회의 수의 최댓값을 구하세요.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(intervals) {\n  // 필요한 최소 회의실 수를 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[7,10],[2,4]]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc3",
+          "input": "[[[1,5],[2,6],[3,7],[4,8]]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc4",
+          "input": "[[[1,3],[3,6]]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc5",
+          "input": "[[[1,10],[2,3],[4,5],[6,7]]]",
+          "expectedOutput": "2"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-meeting-rooms-heap",
+      "categoryId": "cat-array",
+      "title": "회의실 배정표 - 힙 (Meeting Room Schedule with Heap)",
+      "content": "## 문제\n\n회의 시간 배열 `intervals`가 주어졌을 때 (`intervals[i] = [start, end]`), 각 회의에 **회의실 번호를 배정**하고, 최종 배정 결과를 반환하세요.\n\n### 규칙\n\n1. 회의실은 0번부터 시작합니다.\n2. 회의를 **시작 시간 순**으로 처리합니다.\n3. 현재 비어 있는 회의실이 여러 개면 **번호가 가장 작은 회의실**을 배정합니다.\n4. 비어 있는 회의실이 없으면 **새 회의실을 추가**합니다.\n5. 회의실은 `endTime <= start`이면 비어 있는 것으로 간주합니다.\n\n결과는 각 회의(입력 순서)에 배정된 회의실 번호 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[0,30],[5,10],[15,20]] | [0,1,1] |\n| [[7,10],[2,4]] | [1,0] |\n| [[1,5],[2,6],[6,8]] | [0,1,0] |\n| [[1,3],[3,6],[2,5],[5,7]] | [0,0,1,1] |\n\n설명 (첫 번째 예시):\n- [0,30] → 회의실 0 배정\n- [5,10] → 회의실 0은 30까지 사용 중 → 회의실 1 새로 배정\n- [15,20] → 회의실 1은 10에 끝남(비어있음) → 회의실 1 배정\n\n## 핵심 아이디어\n\n**최소 힙(Min Heap)**에 `(endTime, roomId)`를 저장합니다.\n- 새 회의 시작 시, 힙에서 `endTime <= start`인 방을 모두 꺼내 \"사용 가능\" 풀에 넣습니다.\n- 사용 가능한 방이 있으면 번호가 가장 작은 방을, 없으면 새 방을 배정합니다.\n- 배정 후 `(end, roomId)`를 다시 힙에 넣습니다.\n\n## 힌트\n\nJS에는 내장 힙이 없으므로 직접 MinHeap 클래스를 구현하거나, 배열을 정렬로 대체해도 됩니다.",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 30,
+      "performanceLimit": 100,
+      "template": "function solution(intervals) {\n  // MinHeap을 구현하거나 정렬 기반으로 대체하세요\n  // 각 회의(입력 순서)에 배정된 회의실 번호 배열을 반환\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expectedOutput": "[0,1,1]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[7,10],[2,4]]]",
+          "expectedOutput": "[1,0]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[[1,5],[2,6],[6,8]]]",
+          "expectedOutput": "[0,1,0]"
+        },
+        {
+          "id": "tc4",
+          "input": "[[[1,3],[3,6],[2,5],[5,7]]]",
+          "expectedOutput": "[0,0,1,1]"
+        },
+        {
+          "id": "tc5",
+          "input": "[[[1,2],[2,3],[3,4]]]",
+          "expectedOutput": "[0,0,0]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-overlap-count",
+      "categoryId": "cat-array",
+      "title": "겹치는 구간 개수 세기 (Overlapping Interval Count)",
+      "content": "## 문제\n\n구간 배열 `intervals`가 주어졌을 때, **서로 겹치는 구간 쌍의 개수**를 반환하세요.\n\n구간 `[a, b]`와 `[c, d]`가 겹친다는 것은 `a < d && c < b`를 의미합니다 (끝점이 같으면 겹치지 않음).\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[1,5],[2,6],[3,4],[7,9]] | 3 |\n| [[1,2],[3,4],[5,6]] | 0 |\n| [[1,10],[2,3],[4,5]] | 2 |\n\n설명: [[1,5],[2,6],[3,4],[7,9]]에서 겹치는 쌍은 [1,5]&[2,6], [1,5]&[3,4], [2,6]&[3,4] → 3개\n\n## 제약 조건\n\n- `1 <= intervals.length <= 10^3`\n\n## 힌트\n\n시작점 기준으로 정렬한 뒤, 각 구간이 이전 구간들과 겹치는지 확인하세요. 정렬을 활용하면 불필요한 비교를 줄일 수 있습니다.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 100,
+      "template": "function solution(intervals) {\n  // 겹치는 구간 쌍의 개수를 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[1,5],[2,6],[3,4],[7,9]]]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[1,2],[3,4],[5,6]]]",
+          "expectedOutput": "0"
+        },
+        {
+          "id": "tc3",
+          "input": "[[[1,10],[2,3],[4,5]]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc4",
+          "input": "[[[1,3],[2,4],[3,5]]]",
+          "expectedOutput": "2"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-my-calendar",
+      "categoryId": "cat-array",
+      "title": "내 일정 관리자 (My Calendar)",
+      "content": "## 문제\n\n일정 관리 클래스를 구현하세요. 새로운 일정 `[start, end)`을 추가할 때, **기존 일정과 겹치면 추가하지 않고 `false`**, 겹치지 않으면 추가하고 `true`를 반환합니다.\n\n함수 `solution(bookings)`은 예약 요청 배열을 받아, 각 요청의 성공 여부를 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[10,20],[15,25],[20,30]] | [true, false, true] |\n| [[1,5],[5,10],[1,3]] | [true, true, false] |\n\n설명:\n- [10,20] 추가 → 성공\n- [15,25]는 [10,20)과 겹침 → 실패\n- [20,30]은 [10,20)과 겹치지 않음 (끝점 == 시작점) → 성공\n\n## 제약 조건\n\n- `0 <= start < end <= 10^9`\n- 최대 1000개의 예약 요청\n\n## 힌트\n\n저장된 일정들을 순회하면서 `start < existEnd && existStart < end`이면 겹칩니다.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 100,
+      "template": "function solution(bookings) {\n  // 각 [start, end] 예약의 성공 여부를 배열로 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[  [10,20],[15,25],[20,30]  ]]",
+          "expectedOutput": "[true,false,true]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[  [1,5],[5,10],[1,3]  ]]",
+          "expectedOutput": "[true,true,false]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[  [1,2],[2,3],[3,4],[1,4]  ]]",
+          "expectedOutput": "[true,true,true,false]"
+        },
+        {
+          "id": "tc4",
+          "input": "[[  [5,10]  ]]",
+          "expectedOutput": "[true]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-my-calendar-double",
+      "categoryId": "cat-array",
+      "title": "내 일정 관리자 II - 이중 예약 (My Calendar II)",
+      "content": "## 문제\n\n일정 관리 클래스를 구현하세요. 새로운 일정 `[start, end)`을 추가할 때, **삼중 겹침(triple booking)이 발생하면 추가하지 않고 `false`**, 아니면 추가하고 `true`를 반환합니다.\n\n이중 겹침(double booking)은 허용되지만, 삼중 겹침은 안 됩니다.\n\n함수 `solution(bookings)`은 예약 요청 배열을 받아, 각 요청의 성공 여부를 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[10,20],[50,60],[10,40],[5,15],[5,10],[25,55]] | [true,true,true,true,false,true] |\n\n설명:\n- [5,15]까지 추가하면 [10,15) 구간이 이중 겹침 → 허용\n- [5,10]을 추가하면 [5,10) + [10,20) + [10,40) + [5,15)에서 [5,10) 구간 삼중 겹침 → 거부\n\n## 제약 조건\n\n- `0 <= start < end <= 10^9`\n\n## 힌트\n\n`overlaps` 배열(이중 겹침 구간)을 별도로 관리하세요. 새 일정이 `overlaps`의 어떤 구간과 겹치면 삼중 겹침이 됩니다.",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 25,
+      "performanceLimit": 100,
+      "template": "function solution(bookings) {\n  // 삼중 겹침이 발생하지 않도록 예약하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[  [10,20],[50,60],[10,40],[5,15],[5,10],[25,55]  ]]",
+          "expectedOutput": "[true,true,true,true,false,true]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[  [1,5],[1,5],[1,5]  ]]",
+          "expectedOutput": "[true,true,false]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[  [1,3],[3,5],[5,7]  ]]",
+          "expectedOutput": "[true,true,true]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-min-bike-racks",
+      "categoryId": "cat-array",
+      "title": "자전거 대여소 최소 거치대 (Min Bike Racks)",
+      "content": "## 문제\n\n자전거 대여/반납 시간 배열 `rentals`가 주어집니다 (`rentals[i] = [대여시각, 반납시각]`).\n\n모든 대여를 수용하려면 **최소 몇 개의 거치대**가 필요한지 반환하세요.\n\n동시에 대여 중인 자전거 수의 최댓값이 곧 필요한 거치대 수입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[0,30],[5,10],[15,20]] | 2 |\n| [[1,2],[3,4],[5,6]] | 1 |\n| [[0,5],[1,6],[2,7],[3,8]] | 4 |\n| [[9,10],[4,9],[5,17]] | 2 |\n\n설명:\n- [[0,30],[5,10],[15,20]]: 시각 5~10에 2대 동시 사용 → 거치대 2개\n- [[0,5],[1,6],[2,7],[3,8]]: 시각 3~5에 4대 동시 사용 → 거치대 4개\n\n## 힌트\n\n이벤트 정렬 기법: 각 대여를 (시각, +1), 각 반납을 (시각, -1) 이벤트로 변환하고, 시각 순 정렬 후 누적합의 최댓값을 구하세요. 같은 시각이면 반납(-1)을 먼저 처리합니다.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(rentals) {\n  // 최소 거치대 수를 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[1,2],[3,4],[5,6]]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc3",
+          "input": "[[[0,5],[1,6],[2,7],[3,8]]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc4",
+          "input": "[[[9,10],[4,9],[5,17]]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc5",
+          "input": "[[[1,10],[1,10],[1,10]]]",
+          "expectedOutput": "3"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-23T00:00:00.000Z"
+    },
+    {
+      "id": "prob-product-except-self",
+      "categoryId": "cat-array",
+      "title": "자기 자신을 제외한 곱 (Product Except Self)",
+      "content": "## 문제\n\n정수 배열 `nums`가 주어졌을 때, `answer[i]`가 `nums[i]`를 제외한 나머지 모든 원소의 곱인 배열 `answer`를 반환하세요.\n\n**나눗셈 연산을 사용하지 마세요.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,3,4] | [24,12,8,6] |\n| [-1,1,0,-3,3] | [0,0,9,0,0] |\n\n## 제약 조건\n\n- `2 <= nums.length <= 10^5`\n\n## 힌트\n\n왼쪽 누적곱과 오른쪽 누적곱을 이용하세요.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // 나눗셈 없이 풀어보세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,3,4]]",
+          "expectedOutput": "[24,12,8,6]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[-1,1,0,-3,3]]",
+          "expectedOutput": "[0,0,9,0,0]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[2,3]]",
+          "expectedOutput": "[3,2]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-container-water",
+      "categoryId": "cat-array",
+      "title": "물 담기 (Container With Most Water)",
+      "content": "## 문제\n\n높이 배열 `height`가 주어졌을 때, 두 선을 골라 가장 많은 물을 담을 수 있는 컨테이너의 넓이를 반환하세요.\n\n넓이 = `min(height[i], height[j]) * (j - i)`\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,8,6,2,5,4,8,3,7] | 49 |\n| [1,1] | 1 |\n\n## 제약 조건\n\n- `2 <= height.length <= 10^5`\n\n## 힌트\n\n투 포인터를 사용하세요.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(height) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,8,6,2,5,4,8,3,7]]",
+          "expectedOutput": "49"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1,1]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc3",
+          "input": "[[4,3,2,1,4]]",
+          "expectedOutput": "16"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-spiral-matrix",
+      "categoryId": "cat-array",
+      "title": "나선형 행렬 (Spiral Matrix)",
+      "content": "## 문제\n\n`m x n` 행렬이 주어졌을 때, 나선형(시계 방향) 순서로 모든 원소를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[1,2,3],[4,5,6],[7,8,9]] | [1,2,3,6,9,8,7,4,5] |\n| [[1,2,3,4],[5,6,7,8],[9,10,11,12]] | [1,2,3,4,8,12,11,10,9,5,6,7] |\n\n## 제약 조건\n\n- `m, n >= 1`",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 25,
+      "performanceLimit": 50,
+      "template": "function solution(matrix) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[1,2,3],[4,5,6],[7,8,9]]]",
+          "expectedOutput": "[1,2,3,6,9,8,7,4,5]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[1,2,3,4],[5,6,7,8],[9,10,11,12]]]",
+          "expectedOutput": "[1,2,3,4,8,12,11,10,9,5,6,7]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[[1]]]",
+          "expectedOutput": "[1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-longest-consecutive",
+      "categoryId": "cat-array",
+      "title": "최장 연속 수열 (Longest Consecutive Sequence)",
+      "content": "## 문제\n\n정렬되지 않은 정수 배열 `nums`에서 가장 긴 연속 원소 수열의 길이를 반환하세요.\n\n**O(n) 시간 복잡도로 풀어야 합니다.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [100,4,200,1,3,2] | 4 |\n| [0,3,7,2,5,8,4,6,0,1] | 9 |\n\n설명: 1,2,3,4가 가장 긴 연속 수열 (길이 4)\n\n## 힌트\n\nSet을 사용하여 각 수열의 시작점에서만 탐색하세요.",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // O(n)으로 풀어보세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[100,4,200,1,3,2]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[[0,3,7,2,5,8,4,6,0,1]]",
+          "expectedOutput": "9"
+        },
+        {
+          "id": "tc3",
+          "input": "[[]]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-trapping-rain",
+      "categoryId": "cat-array",
+      "title": "빗물 가두기 (Trapping Rain Water)",
+      "content": "## 문제\n\n높이 배열 `height`가 주어졌을 때, 비가 온 후 가둘 수 있는 빗물의 양을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [0,1,0,2,1,0,1,3,2,1,2,1] | 6 |\n| [4,2,0,3,2,5] | 9 |\n\n## 제약 조건\n\n- `n >= 1`, `0 <= height[i] <= 10^5`\n\n## 힌트\n\n각 위치에서 왼쪽 최대값과 오른쪽 최대값 중 작은 값에서 현재 높이를 뺀 것이 해당 위치의 물 양입니다.",
+      "language": "javascript",
+      "difficulty": 5,
+      "timeLimit": 25,
+      "performanceLimit": 50,
+      "template": "function solution(height) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[0,1,0,2,1,0,1,3,2,1,2,1]]",
+          "expectedOutput": "6"
+        },
+        {
+          "id": "tc2",
+          "input": "[[4,2,0,3,2,5]]",
+          "expectedOutput": "9"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1,2,3]]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
       "id": "prob-palindrome",
       "categoryId": "cat-string",
       "title": "팰린드롬 확인 (Palindrome Check)",
-      "content": "## 문제\n\n주어진 문자열 `s`가 팰린드롬(앞뒤가 같은 문자열)인지 확인하세요.\n\n영문 소문자와 숫자만 고려하고, 대소문자는 구분하지 않습니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"A man, a plan, a canal: Panama\" | true |\n| \"race a car\" | false |\n| \" \" | true |\n\n## 제약 조건\n\n- `1 <= s.length <= 2 * 10^5`\n- 문자열은 ASCII 문자로만 구성됩니다.",
+      "content": "## 문제\n\n주어진 문자열 `s`가 팰린드롬인지 확인하세요. 영문 소문자와 숫자만 고려하고, 대소문자는 구분하지 않습니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"A man, a plan, a canal: Panama\" | true |\n| \"race a car\" | false |\n| \" \" | true |",
       "language": "javascript",
       "difficulty": 1,
       "timeLimit": 10,
@@ -124,7 +782,7 @@
       "id": "prob-reverse-string",
       "categoryId": "cat-string",
       "title": "문자열 뒤집기 (Reverse String)",
-      "content": "## 문제\n\n문자 배열 `s`가 주어지면, 문자열을 뒤집어서 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"h\",\"e\",\"l\",\"l\",\"o\"] | [\"o\",\"l\",\"l\",\"e\",\"h\"] |\n| [\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"] | [\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"] |\n\n## 제약 조건\n\n- `1 <= s.length <= 10^5`\n\n## 힌트\n\n추가 배열 할당 없이 O(1) 공간에서 풀어보세요 (투 포인터).",
+      "content": "## 문제\n\n문자 배열 `s`가 주어지면, 문자열을 뒤집어서 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"h\",\"e\",\"l\",\"l\",\"o\"] | [\"o\",\"l\",\"l\",\"e\",\"h\"] |\n| [\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"] | [\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"] |\n\n## 힌트\n\n투 포인터로 O(1) 공간에서 풀어보세요.",
       "language": "javascript",
       "difficulty": 1,
       "timeLimit": 5,
@@ -147,12 +805,270 @@
       "createdAt": "2026-06-22T00:00:00.000Z"
     },
     {
+      "id": "prob-valid-anagram",
+      "categoryId": "cat-string",
+      "title": "유효한 애너그램 (Valid Anagram)",
+      "content": "## 문제\n\n두 문자열 `s`와 `t`가 주어졌을 때, `t`가 `s`의 애너그램인지 판별하세요.\n\n애너그램이란 같은 문자를 재배열하여 만든 문자열입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| s=\"anagram\", t=\"nagaram\" | true |\n| s=\"rat\", t=\"car\" | false |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(s, t) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"anagram\", \"nagaram\"]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"rat\", \"car\"]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"a\", \"a\"]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-longest-common-prefix",
+      "categoryId": "cat-string",
+      "title": "가장 긴 공통 접두사 (Longest Common Prefix)",
+      "content": "## 문제\n\n문자열 배열에서 가장 긴 공통 접두사를 반환하세요. 공통 접두사가 없으면 빈 문자열을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"flower\",\"flow\",\"flight\"] | \"fl\" |\n| [\"dog\",\"racecar\",\"car\"] | \"\" |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(strs) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[\"flower\",\"flow\",\"flight\"]]",
+          "expectedOutput": "\"fl\""
+        },
+        {
+          "id": "tc2",
+          "input": "[[\"dog\",\"racecar\",\"car\"]]",
+          "expectedOutput": "\"\""
+        },
+        {
+          "id": "tc3",
+          "input": "[[\"a\"]]",
+          "expectedOutput": "\"a\""
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-string-compression",
+      "categoryId": "cat-string",
+      "title": "문자열 압축 (String Compression)",
+      "content": "## 문제\n\n문자열 `s`가 주어졌을 때, 연속된 같은 문자를 `문자+개수` 형태로 압축하세요. 개수가 1이면 숫자를 생략합니다. 압축 결과가 원본보다 짧지 않으면 원본을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"aabcccccaaa\" | \"a2bc5a3\" |\n| \"abcdef\" | \"abcdef\" |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"aabcccccaaa\"]",
+          "expectedOutput": "\"a2bc5a3\""
+        },
+        {
+          "id": "tc2",
+          "input": "[\"abcdef\"]",
+          "expectedOutput": "\"abcdef\""
+        },
+        {
+          "id": "tc3",
+          "input": "[\"aaa\"]",
+          "expectedOutput": "\"a3\""
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-longest-substring",
+      "categoryId": "cat-string",
+      "title": "반복 없는 가장 긴 부분 문자열 (Longest Substring Without Repeating)",
+      "content": "## 문제\n\n문자열 `s`에서 반복되는 문자가 없는 가장 긴 부분 문자열의 길이를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"abcabcbb\" | 3 |\n| \"bbbbb\" | 1 |\n| \"pwwkew\" | 3 |\n\n## 힌트\n\n슬라이딩 윈도우 + Set/Map을 사용하세요.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"abcabcbb\"]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"bbbbb\"]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"pwwkew\"]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc4",
+          "input": "[\"\"]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-group-anagrams",
+      "categoryId": "cat-string",
+      "title": "그룹 애너그램 (Group Anagrams)",
+      "content": "## 문제\n\n문자열 배열 `strs`가 주어졌을 때, 애너그램끼리 그룹으로 묶어 반환하세요. 각 그룹 내 순서는 무관하나, 각 그룹은 정렬하여 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"] | [[\"ate\",\"eat\",\"tea\"],[\"bat\"],[\"nat\",\"tan\"]] |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(strs) {\n  // 그룹별로 정렬하여 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]]",
+          "expectedOutput": "[[\"ate\",\"eat\",\"tea\"],[\"bat\"],[\"nat\",\"tan\"]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[\"\"]]",
+          "expectedOutput": "[[\"\"]]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[\"a\"]]",
+          "expectedOutput": "[[\"a\"]]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-longest-palindromic",
+      "categoryId": "cat-string",
+      "title": "가장 긴 팰린드롬 부분 문자열 (Longest Palindromic Substring)",
+      "content": "## 문제\n\n문자열 `s`에서 가장 긴 팰린드롬 부분 문자열을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"babad\" | \"bab\" |\n| \"cbbd\" | \"bb\" |\n\n## 힌트\n\n각 문자를 중심으로 확장하는 방법 또는 DP를 사용하세요.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 100,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"babad\"]",
+          "expectedOutput": "\"bab\""
+        },
+        {
+          "id": "tc2",
+          "input": "[\"cbbd\"]",
+          "expectedOutput": "\"bb\""
+        },
+        {
+          "id": "tc3",
+          "input": "[\"a\"]",
+          "expectedOutput": "\"a\""
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-atoi",
+      "categoryId": "cat-string",
+      "title": "문자열을 정수로 (String to Integer - atoi)",
+      "content": "## 문제\n\n문자열 `s`를 정수로 변환하는 `atoi` 함수를 구현하세요.\n\n규칙:\n1. 선행 공백 무시\n2. 부호(`+` 또는 `-`) 확인\n3. 숫자가 아닌 문자가 나오면 중단\n4. 32비트 정수 범위 [-2^31, 2^31-1]로 클램핑\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"42\" | 42 |\n| \"   -42\" | -42 |\n| \"4193 with words\" | 4193 |\n| \"words and 987\" | 0 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"42\"]",
+          "expectedOutput": "42"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"   -42\"]",
+          "expectedOutput": "-42"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"4193 with words\"]",
+          "expectedOutput": "4193"
+        },
+        {
+          "id": "tc4",
+          "input": "[\"words and 987\"]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-zigzag-string",
+      "categoryId": "cat-string",
+      "title": "지그재그 변환 (Zigzag Conversion)",
+      "content": "## 문제\n\n문자열 `s`를 `numRows` 행의 지그재그 패턴으로 배치한 후, 각 행을 합쳐 반환하세요.\n\n예: \"PAYPALISHIRING\", 3행\n```\nP   A   H   N\nA P L S I I G\nY   I   R\n```\n결과: \"PAHNAPLSIIGYIR\"\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| s=\"PAYPALISHIRING\", numRows=3 | \"PAHNAPLSIIGYIR\" |\n| s=\"PAYPALISHIRING\", numRows=4 | \"PINALSIGYAHRPI\" |\n| s=\"A\", numRows=1 | \"A\" |",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(s, numRows) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"PAYPALISHIRING\", 3]",
+          "expectedOutput": "\"PAHNAPLSIIGYIR\""
+        },
+        {
+          "id": "tc2",
+          "input": "[\"PAYPALISHIRING\", 4]",
+          "expectedOutput": "\"PINALSIGYAHRPI\""
+        },
+        {
+          "id": "tc3",
+          "input": "[\"A\", 1]",
+          "expectedOutput": "\"A\""
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
       "id": "prob-bubble-sort",
       "categoryId": "cat-sort",
       "title": "버블 정렬 (Bubble Sort)",
-      "content": "## 문제\n\n정수 배열 `nums`가 주어지면, **버블 정렬** 알고리즘을 사용하여 오름차순으로 정렬된 배열을 반환하세요.\n\n## 버블 정렬이란?\n\n인접한 두 원소를 비교하여 순서가 잘못되어 있으면 서로 교환하는 정렬 알고리즘입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [64, 34, 25, 12, 22, 11, 90] | [11, 12, 22, 25, 34, 64, 90] |\n| [5, 1, 4, 2, 8] | [1, 2, 4, 5, 8] |\n\n## 제약 조건\n\n- `1 <= nums.length <= 10^4`\n- 내장 정렬 함수 사용 금지",
+      "content": "## 문제\n\n정수 배열 `nums`가 주어지면, **버블 정렬** 알고리즘을 사용하여 오름차순으로 정렬된 배열을 반환하세요.\n\n인접한 두 원소를 비교하여 순서가 잘못되어 있으면 교환합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [64, 34, 25, 12, 22, 11, 90] | [11, 12, 22, 25, 34, 64, 90] |\n| [5, 1, 4, 2, 8] | [1, 2, 4, 5, 8] |\n\n## 제약 조건\n\n- 내장 정렬 함수 사용 금지",
       "language": "javascript",
-      "difficulty": 2,
+      "difficulty": 1,
       "timeLimit": 15,
       "performanceLimit": 100,
       "template": "function solution(nums) {\n  // 버블 정렬을 구현하세요\n  \n}",
@@ -178,10 +1094,289 @@
       "createdAt": "2026-06-22T00:00:00.000Z"
     },
     {
+      "id": "prob-selection-sort",
+      "categoryId": "cat-sort",
+      "title": "선택 정렬 (Selection Sort)",
+      "content": "## 문제\n\n**선택 정렬**을 구현하세요. 매 반복에서 남은 원소 중 최솟값을 찾아 현재 위치와 교환합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [29, 10, 14, 37, 13] | [10, 13, 14, 29, 37] |\n\n## 제약 조건\n\n- 내장 정렬 함수 사용 금지",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 15,
+      "performanceLimit": 100,
+      "template": "function solution(nums) {\n  // 선택 정렬을 구현하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[29, 10, 14, 37, 13]]",
+          "expectedOutput": "[10,13,14,29,37]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[3,1,2]]",
+          "expectedOutput": "[1,2,3]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "[1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-insertion-sort",
+      "categoryId": "cat-sort",
+      "title": "삽입 정렬 (Insertion Sort)",
+      "content": "## 문제\n\n**삽입 정렬**을 구현하세요. 각 원소를 이미 정렬된 부분의 올바른 위치에 삽입합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [12, 11, 13, 5, 6] | [5, 6, 11, 12, 13] |\n\n## 제약 조건\n\n- 내장 정렬 함수 사용 금지",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 15,
+      "performanceLimit": 100,
+      "template": "function solution(nums) {\n  // 삽입 정렬을 구현하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[12, 11, 13, 5, 6]]",
+          "expectedOutput": "[5,6,11,12,13]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[4,3,2,1]]",
+          "expectedOutput": "[1,2,3,4]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1,2,3]]",
+          "expectedOutput": "[1,2,3]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-merge-sorted",
+      "categoryId": "cat-sort",
+      "title": "정렬된 배열 합치기 (Merge Sorted Arrays)",
+      "content": "## 문제\n\n두 정렬된 배열 `nums1`과 `nums2`를 하나의 정렬된 배열로 합쳐 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,4], [1,3,4] | [1,1,2,3,4,4] |\n| [], [0] | [0] |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(nums1, nums2) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,4], [1,3,4]]",
+          "expectedOutput": "[1,1,2,3,4,4]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[], [0]]",
+          "expectedOutput": "[0]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[2,5,6], [1,3,7]]",
+          "expectedOutput": "[1,2,3,5,6,7]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-sort-colors",
+      "categoryId": "cat-sort",
+      "title": "색깔 정렬 (Sort Colors)",
+      "content": "## 문제\n\n0(빨강), 1(흰), 2(파랑)으로 이루어진 배열을 정렬하세요. 내장 정렬 함수를 사용하지 마세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [2,0,2,1,1,0] | [0,0,1,1,2,2] |\n| [2,0,1] | [0,1,2] |\n\n## 힌트\n\nDutch National Flag 알고리즘 (3-way partition)을 사용하면 한 번의 순회로 풀 수 있습니다.",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(nums) {\n  // 내장 정렬 없이 풀어보세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[2,0,2,1,1,0]]",
+          "expectedOutput": "[0,0,1,1,2,2]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[2,0,1]]",
+          "expectedOutput": "[0,1,2]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[0]]",
+          "expectedOutput": "[0]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-merge-sort",
+      "categoryId": "cat-sort",
+      "title": "병합 정렬 (Merge Sort)",
+      "content": "## 문제\n\n**병합 정렬**을 구현하세요. 배열을 반으로 나누고, 각각 정렬한 뒤, 합칩니다.\n\n시간 복잡도: O(n log n)\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [38, 27, 43, 3, 9, 82, 10] | [3, 9, 10, 27, 38, 43, 82] |\n\n## 제약 조건\n\n- 내장 정렬 함수 사용 금지\n- 반드시 분할 정복 방식으로 구현하세요",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // 병합 정렬을 구현하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[38, 27, 43, 3, 9, 82, 10]]",
+          "expectedOutput": "[3,9,10,27,38,43,82]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[5,4,3,2,1]]",
+          "expectedOutput": "[1,2,3,4,5]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "[1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-quick-sort",
+      "categoryId": "cat-sort",
+      "title": "퀵 정렬 (Quick Sort)",
+      "content": "## 문제\n\n**퀵 정렬**을 구현하세요. 피벗을 기준으로 작은 원소와 큰 원소를 분리한 후 재귀적으로 정렬합니다.\n\n평균 시간 복잡도: O(n log n)\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [10, 7, 8, 9, 1, 5] | [1, 5, 7, 8, 9, 10] |\n\n## 제약 조건\n\n- 내장 정렬 함수 사용 금지",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // 퀵 정렬을 구현하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[10, 7, 8, 9, 1, 5]]",
+          "expectedOutput": "[1,5,7,8,9,10]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[3,3,3]]",
+          "expectedOutput": "[3,3,3]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[2,1]]",
+          "expectedOutput": "[1,2]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-kth-largest",
+      "categoryId": "cat-sort",
+      "title": "K번째 큰 수 (Kth Largest Element)",
+      "content": "## 문제\n\n정수 배열 `nums`에서 `k`번째로 큰 원소를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums=[3,2,1,5,6,4], k=2 | 5 |\n| nums=[3,2,3,1,2,4,5,5,6], k=4 | 4 |\n\n## 힌트\n\n정렬 후 인덱싱하거나, Quick Select 알고리즘을 사용하면 평균 O(n)에 풀 수 있습니다.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[3,2,1,5,6,4], 2]",
+          "expectedOutput": "5"
+        },
+        {
+          "id": "tc2",
+          "input": "[[3,2,3,1,2,4,5,5,6], 4]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1], 1]",
+          "expectedOutput": "1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-largest-number",
+      "categoryId": "cat-sort",
+      "title": "가장 큰 수 (Largest Number)",
+      "content": "## 문제\n\n음이 아닌 정수 배열 `nums`가 주어졌을 때, 숫자들을 이어 붙여 만들 수 있는 가장 큰 수를 문자열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [10,2] | \"210\" |\n| [3,30,34,5,9] | \"9534330\" |\n\n## 힌트\n\n커스텀 비교 함수로 정렬하세요: a+b vs b+a 비교.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[10,2]]",
+          "expectedOutput": "\"210\""
+        },
+        {
+          "id": "tc2",
+          "input": "[[3,30,34,5,9]]",
+          "expectedOutput": "\"9534330\""
+        },
+        {
+          "id": "tc3",
+          "input": "[[0,0]]",
+          "expectedOutput": "\"0\""
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-count-sort",
+      "categoryId": "cat-sort",
+      "title": "카운팅 정렬 (Counting Sort)",
+      "content": "## 문제\n\n0 이상의 정수 배열 `nums`를 **카운팅 정렬**로 정렬하세요. 각 값의 출현 횟수를 세어 정렬합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [4,2,2,8,3,3,1] | [1,2,2,3,3,4,8] |\n\n## 제약 조건\n\n- `0 <= nums[i] <= 1000`\n- 내장 정렬 함수 사용 금지",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(nums) {\n  // 카운팅 정렬을 구현하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[4,2,2,8,3,3,1]]",
+          "expectedOutput": "[1,2,2,3,3,4,8]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[5,5,5]]",
+          "expectedOutput": "[5,5,5]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[0,3,1]]",
+          "expectedOutput": "[0,1,3]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
       "id": "prob-valid-parentheses",
       "categoryId": "cat-stack",
       "title": "유효한 괄호 (Valid Parentheses)",
-      "content": "## 문제\n\n`(`, `)`, `{`, `}`, `[`, `]`로만 구성된 문자열 `s`가 주어졌을 때, 문자열이 유효한지 판별하세요.\n\n유효한 문자열은:\n1. 열린 괄호는 같은 종류의 닫힌 괄호로 닫혀야 합니다.\n2. 열린 괄호는 올바른 순서로 닫혀야 합니다.\n3. 모든 닫힌 괄호에는 대응하는 열린 괄호가 있어야 합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"()\" | true |\n| \"()[]{}\" | true |\n| \"(]\" | false |\n| \"([)]\" | false |\n| \"{[]}\" | true |\n\n## 제약 조건\n\n- `1 <= s.length <= 10^4`",
+      "content": "## 문제\n\n`(`, `)`, `{`, `}`, `[`, `]`로만 구성된 문자열 `s`가 주어졌을 때, 유효한지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"()\" | true |\n| \"()[]{}\" | true |\n| \"(]\" | false |\n| \"{[]}\" | true |",
       "language": "javascript",
       "difficulty": 1,
       "timeLimit": 10,
@@ -205,13 +1400,251 @@
         },
         {
           "id": "tc4",
-          "input": "[\"([)]\"]",
-          "expectedOutput": "false"
-        },
-        {
-          "id": "tc5",
           "input": "[\"{[]}\"]",
           "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-min-stack",
+      "categoryId": "cat-stack",
+      "title": "최소 스택 (Min Stack)",
+      "content": "## 문제\n\n`operations` 배열이 주어집니다. 각 연산은 `[\"push\", val]`, `[\"pop\"]`, `[\"getMin\"]` 중 하나입니다.\n\n스택을 구현하여 모든 `getMin` 연산의 결과를 배열로 반환하세요. getMin은 O(1)이어야 합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[\"push\",-2],[\"push\",0],[\"push\",-3],[\"getMin\"],[\"pop\"],[\"getMin\"]] | [-3,-2] |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(operations) {\n  // getMin 결과들을 배열로 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[\"push\",-2],[\"push\",0],[\"push\",-3],[\"getMin\"],[\"pop\"],[\"getMin\"]]]",
+          "expectedOutput": "[-3,-2]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[\"push\",1],[\"push\",2],[\"getMin\"],[\"push\",0],[\"getMin\"]]]",
+          "expectedOutput": "[1,0]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-eval-rpn",
+      "categoryId": "cat-stack",
+      "title": "후위 표기식 계산 (Evaluate RPN)",
+      "content": "## 문제\n\n후위 표기법(역 폴란드 표기법)으로 표현된 수식 `tokens`의 결과를 반환하세요.\n\n유효한 연산자: `+`, `-`, `*`, `/` (정수 나눗셈, 0에 가까운 쪽으로 내림)\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"2\",\"1\",\"+\",\"3\",\"*\"] | 9 |\n| [\"4\",\"13\",\"5\",\"/\",\"+\"] | 6 |\n| [\"10\",\"6\",\"9\",\"3\",\"+\",\"-11\",\"*\",\"/\",\"*\",\"17\",\"+\",\"5\",\"+\"] | 22 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(tokens) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[\"2\",\"1\",\"+\",\"3\",\"*\"]]",
+          "expectedOutput": "9"
+        },
+        {
+          "id": "tc2",
+          "input": "[[\"4\",\"13\",\"5\",\"/\",\"+\"]]",
+          "expectedOutput": "6"
+        },
+        {
+          "id": "tc3",
+          "input": "[[\"10\",\"6\",\"9\",\"3\",\"+\",\"-11\",\"*\",\"/\",\"*\",\"17\",\"+\",\"5\",\"+\"]]",
+          "expectedOutput": "22"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-stack-sort",
+      "categoryId": "cat-stack",
+      "title": "스택 정렬 (Sort a Stack)",
+      "content": "## 문제\n\n배열로 표현된 스택(마지막이 top)을 오름차순(bottom이 가장 작은 값)으로 정렬하세요.\n\n추가 스택 하나만 사용할 수 있으며, 내장 정렬 함수는 사용 금지입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [5,3,8,1,2] | [1,2,3,5,8] |\n| [3,1,2] | [1,2,3] |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(stack) {\n  // 추가 스택 하나만 사용하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[5,3,8,1,2]]",
+          "expectedOutput": "[1,2,3,5,8]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[3,1,2]]",
+          "expectedOutput": "[1,2,3]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "[1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-daily-temperatures",
+      "categoryId": "cat-stack",
+      "title": "일일 온도 (Daily Temperatures)",
+      "content": "## 문제\n\n일일 온도 배열 `temperatures`가 주어졌을 때, 각 날에 대해 더 따뜻한 날이 오기까지 며칠을 기다려야 하는지 반환하세요.\n\n더 따뜻한 날이 없으면 0입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [73,74,75,71,69,72,76,73] | [1,1,4,2,1,1,0,0] |\n| [30,40,50,60] | [1,1,1,0] |\n\n## 힌트\n\n단조 감소 스택을 사용하세요.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(temperatures) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[73,74,75,71,69,72,76,73]]",
+          "expectedOutput": "[1,1,4,2,1,1,0,0]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[30,40,50,60]]",
+          "expectedOutput": "[1,1,1,0]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[30,20,10]]",
+          "expectedOutput": "[0,0,0]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-generate-parentheses",
+      "categoryId": "cat-stack",
+      "title": "괄호 생성 (Generate Parentheses)",
+      "content": "## 문제\n\n`n`쌍의 괄호로 만들 수 있는 모든 유효한 조합을 반환하세요. 결과는 사전순으로 정렬하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 3 | [\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"] |\n| 1 | [\"()\"] |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[3]",
+          "expectedOutput": "[\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]"
+        },
+        {
+          "id": "tc2",
+          "input": "[1]",
+          "expectedOutput": "[\"()\"]"
+        },
+        {
+          "id": "tc3",
+          "input": "[2]",
+          "expectedOutput": "[\"(())\",\"()()\"]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-next-greater",
+      "categoryId": "cat-stack",
+      "title": "다음 큰 수 (Next Greater Element)",
+      "content": "## 문제\n\n배열 `nums`의 각 원소에 대해, 오른쪽에 있는 첫 번째 더 큰 원소를 반환하세요. 없으면 -1입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [2,1,2,4,3] | [4,2,4,-1,-1] |\n| [1,3,2,4] | [3,4,4,-1] |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[2,1,2,4,3]]",
+          "expectedOutput": "[4,2,4,-1,-1]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1,3,2,4]]",
+          "expectedOutput": "[3,4,4,-1]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[5]]",
+          "expectedOutput": "[-1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-sliding-window-max",
+      "categoryId": "cat-stack",
+      "title": "슬라이딩 윈도우 최대값 (Sliding Window Maximum)",
+      "content": "## 문제\n\n정수 배열 `nums`와 윈도우 크기 `k`가 주어졌을 때, 크기 `k`인 슬라이딩 윈도우가 왼쪽에서 오른쪽으로 이동하면서 각 위치의 최대값을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums=[1,3,-1,-3,5,3,6,7], k=3 | [3,3,5,5,6,7] |\n\n## 힌트\n\nDeque(양방향 큐)를 사용하면 O(n)에 풀 수 있습니다.",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 25,
+      "performanceLimit": 50,
+      "template": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,3,-1,-3,5,3,6,7], 3]",
+          "expectedOutput": "[3,3,5,5,6,7]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1], 1]",
+          "expectedOutput": "[1]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[9,11], 2]",
+          "expectedOutput": "[11]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-largest-rectangle",
+      "categoryId": "cat-stack",
+      "title": "히스토그램 최대 사각형 (Largest Rectangle in Histogram)",
+      "content": "## 문제\n\n히스토그램의 막대 높이 배열 `heights`가 주어졌을 때, 가장 큰 직사각형의 넓이를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [2,1,5,6,2,3] | 10 |\n| [2,4] | 4 |\n\n## 힌트\n\n스택을 이용하여 각 막대가 확장될 수 있는 범위를 계산하세요.",
+      "language": "javascript",
+      "difficulty": 5,
+      "timeLimit": 30,
+      "performanceLimit": 50,
+      "template": "function solution(heights) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[2,1,5,6,2,3]]",
+          "expectedOutput": "10"
+        },
+        {
+          "id": "tc2",
+          "input": "[[2,4]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "1"
         }
       ],
       "bookmarked": false,
@@ -222,12 +1655,12 @@
       "id": "prob-max-depth",
       "categoryId": "cat-tree",
       "title": "이진 트리 최대 깊이 (Max Depth)",
-      "content": "## 문제\n\n이진 트리가 배열 형태로 주어졌을 때 (BFS 순서, null은 빈 노드), 트리의 **최대 깊이**를 반환하세요.\n\n최대 깊이란 루트 노드에서 가장 먼 리프 노드까지의 경로에 있는 노드 수입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [3, 9, 20, null, null, 15, 7] | 3 |\n| [1, null, 2] | 2 |\n| [] | 0 |\n\n## 제약 조건\n\n- 노드 수: `0 <= n <= 10^4`\n\n## 힌트\n\n배열에서 트리를 구성한 후 재귀적으로 깊이를 계산하세요.",
+      "content": "## 문제\n\n이진 트리가 배열 형태로 주어졌을 때 (BFS 순서, null은 빈 노드), 트리의 **최대 깊이**를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [3, 9, 20, null, null, 15, 7] | 3 |\n| [1, null, 2] | 2 |\n| [] | 0 |",
       "language": "javascript",
-      "difficulty": 2,
-      "timeLimit": 20,
+      "difficulty": 1,
+      "timeLimit": 15,
       "performanceLimit": 50,
-      "template": "function solution(tree) {\n  // tree는 BFS 순서의 배열입니다 (null은 빈 노드)\n  // 최대 깊이를 반환하세요\n  \n}",
+      "template": "function solution(tree) {\n  // tree는 BFS 순서의 배열입니다\n  // 최대 깊이를 반환하세요\n  \n}",
       "testCases": [
         {
           "id": "tc1",
@@ -243,6 +1676,1743 @@
           "id": "tc3",
           "input": "[[]]",
           "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-invert-tree",
+      "categoryId": "cat-tree",
+      "title": "트리 반전 (Invert Binary Tree)",
+      "content": "## 문제\n\nBFS 배열로 표현된 이진 트리를 좌우 반전(미러)한 결과를 BFS 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [4,2,7,1,3,6,9] | [4,7,2,9,6,3,1] |\n| [2,1,3] | [2,3,1] |\n| [] | [] |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(tree) {\n  // BFS 배열을 반전된 BFS 배열로 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[4,2,7,1,3,6,9]]",
+          "expectedOutput": "[4,7,2,9,6,3,1]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[2,1,3]]",
+          "expectedOutput": "[2,3,1]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[]]",
+          "expectedOutput": "[]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-symmetric-tree",
+      "categoryId": "cat-tree",
+      "title": "대칭 트리 (Symmetric Tree)",
+      "content": "## 문제\n\nBFS 배열로 표현된 이진 트리가 대칭(좌우 대칭)인지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,2,3,4,4,3] | true |\n| [1,2,2,null,3,null,3] | false |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(tree) {\n  // 대칭인지 true/false를 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,2,3,4,4,3]]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1,2,2,null,3,null,3]]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-level-order",
+      "categoryId": "cat-tree",
+      "title": "레벨 순회 (Level Order Traversal)",
+      "content": "## 문제\n\nBFS 배열로 표현된 이진 트리를 레벨별로 묶어 2차원 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [3,9,20,null,null,15,7] | [[3],[9,20],[15,7]] |\n| [1] | [[1]] |\n| [] | [] |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(tree) {\n  // 레벨별 2차원 배열을 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[3,9,20,null,null,15,7]]",
+          "expectedOutput": "[[3],[9,20],[15,7]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1]]",
+          "expectedOutput": "[[1]]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[]]",
+          "expectedOutput": "[]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-path-sum",
+      "categoryId": "cat-tree",
+      "title": "경로 합 (Path Sum)",
+      "content": "## 문제\n\nBFS 배열로 표현된 이진 트리와 목표 합 `targetSum`이 주어졌을 때, 루트에서 리프까지의 경로 중 합이 `targetSum`인 경로가 있는지 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| tree=[5,4,8,11,null,13,4,7,2,null,null,null,1], target=22 | true |\n| tree=[1,2,3], target=5 | false |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(tree, targetSum) {\n  // 경로 합이 targetSum인 경로가 있으면 true\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[5,4,8,11,null,13,4,7,2,null,null,null,1], 22]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1,2,3], 5]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[[], 0]",
+          "expectedOutput": "false"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-validate-bst",
+      "categoryId": "cat-tree",
+      "title": "BST 유효성 검사 (Validate BST)",
+      "content": "## 문제\n\nBFS 배열로 표현된 이진 트리가 유효한 이진 탐색 트리(BST)인지 판별하세요.\n\nBST 조건: 왼쪽 서브트리의 모든 값 < 노드 값 < 오른쪽 서브트리의 모든 값\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [2,1,3] | true |\n| [5,1,4,null,null,3,6] | false |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(tree) {\n  // BST인지 true/false를 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[2,1,3]]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[[5,1,4,null,null,3,6]]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-diameter-tree",
+      "categoryId": "cat-tree",
+      "title": "트리의 지름 (Diameter of Binary Tree)",
+      "content": "## 문제\n\nBFS 배열로 표현된 이진 트리의 **지름**을 반환하세요.\n\n지름이란 두 노드 사이의 가장 긴 경로의 간선 수입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,3,4,5] | 3 |\n| [1,2] | 1 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(tree) {\n  // 지름(간선 수)을 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,3,4,5]]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1,2]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-zigzag-tree",
+      "categoryId": "cat-tree",
+      "title": "지그재그 레벨 순회 (Zigzag Level Order)",
+      "content": "## 문제\n\nBFS 배열로 표현된 이진 트리를 지그재그(첫 레벨은 왼→오, 다음은 오→왼, ...) 순서로 레벨별 2차원 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [3,9,20,null,null,15,7] | [[3],[20,9],[15,7]] |\n| [1] | [[1]] |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(tree) {\n  // 지그재그 레벨 순회 결과를 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[3,9,20,null,null,15,7]]",
+          "expectedOutput": "[[3],[20,9],[15,7]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1]]",
+          "expectedOutput": "[[1]]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[]]",
+          "expectedOutput": "[]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-inorder-traversal",
+      "categoryId": "cat-tree",
+      "title": "중위 순회 (Inorder Traversal)",
+      "content": "## 문제\n\nBFS 배열로 표현된 이진 트리의 **중위 순회** 결과를 반환하세요.\n\n중위 순회: 왼쪽 → 루트 → 오른쪽\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,null,2,null,null,3] | [1,3,2] |\n| [1,2,3] | [2,1,3] |\n| [] | [] |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(tree) {\n  // 중위 순회 결과를 배열로 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,null,2,null,null,3]]",
+          "expectedOutput": "[1,3,2]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1,2,3]]",
+          "expectedOutput": "[2,1,3]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[]]",
+          "expectedOutput": "[]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-freq-count",
+      "categoryId": "cat-hash",
+      "title": "빈도수 세기 (Frequency Count)",
+      "content": "## 문제\n\n정수 배열 `nums`에서 각 원소의 등장 횟수를 구해, `[값, 횟수]` 쌍의 배열을 값 기준 오름차순으로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,2,3,3,3] | [[1,1],[2,2],[3,3]] |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,2,3,3,3]]",
+          "expectedOutput": "[[1,1],[2,2],[3,3]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[5,5,5]]",
+          "expectedOutput": "[[5,3]]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "[[1,1]]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-intersection",
+      "categoryId": "cat-hash",
+      "title": "배열 교집합 (Intersection of Arrays)",
+      "content": "## 문제\n\n두 정수 배열의 교집합을 정렬하여 반환하세요. 결과에 중복은 없어야 합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,2,1], [2,2] | [2] |\n| [4,9,5], [9,4,9,8,4] | [4,9] |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(nums1, nums2) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,2,1], [2,2]]",
+          "expectedOutput": "[2]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[4,9,5], [9,4,9,8,4]]",
+          "expectedOutput": "[4,9]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-first-unique-char",
+      "categoryId": "cat-hash",
+      "title": "첫 고유 문자 (First Unique Character)",
+      "content": "## 문제\n\n문자열 `s`에서 처음으로 반복되지 않는 문자의 인덱스를 반환하세요. 없으면 -1을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"leetcode\" | 0 |\n| \"loveleetcode\" | 2 |\n| \"aabb\" | -1 |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"leetcode\"]",
+          "expectedOutput": "0"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"loveleetcode\"]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"aabb\"]",
+          "expectedOutput": "-1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-ransom-note",
+      "categoryId": "cat-hash",
+      "title": "랜섬 노트 (Ransom Note)",
+      "content": "## 문제\n\n`ransomNote` 문자열을 `magazine` 문자열의 문자로 만들 수 있는지 판별하세요. 각 문자는 한 번만 사용 가능합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"a\", \"b\" | false |\n| \"aa\", \"ab\" | false |\n| \"aa\", \"aab\" | true |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(ransomNote, magazine) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"a\", \"b\"]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"aa\", \"ab\"]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"aa\", \"aab\"]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-isomorphic",
+      "categoryId": "cat-hash",
+      "title": "이소모픽 문자열 (Isomorphic Strings)",
+      "content": "## 문제\n\n두 문자열 `s`와 `t`가 이소모픽(같은 구조)인지 판별하세요. s의 각 문자를 t의 문자로 1:1 매핑할 수 있어야 합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"egg\", \"add\" | true |\n| \"foo\", \"bar\" | false |\n| \"paper\", \"title\" | true |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(s, t) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"egg\", \"add\"]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"foo\", \"bar\"]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"paper\", \"title\"]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-top-k-frequent",
+      "categoryId": "cat-hash",
+      "title": "상위 K 빈출 원소 (Top K Frequent)",
+      "content": "## 문제\n\n정수 배열 `nums`와 정수 `k`가 주어졌을 때, 가장 빈번하게 등장하는 상위 `k`개 원소를 빈도 내림차순으로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums=[1,1,1,2,2,3], k=2 | [1,2] |\n| nums=[1], k=1 | [1] |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,1,1,2,2,3], 2]",
+          "expectedOutput": "[1,2]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1], 1]",
+          "expectedOutput": "[1]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[4,4,4,3,3,2], 2]",
+          "expectedOutput": "[4,3]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-subarray-sum-k",
+      "categoryId": "cat-hash",
+      "title": "부분배열 합 K (Subarray Sum Equals K)",
+      "content": "## 문제\n\n정수 배열 `nums`와 정수 `k`가 주어졌을 때, 합이 `k`인 연속 부분배열의 개수를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums=[1,1,1], k=2 | 2 |\n| nums=[1,2,3], k=3 | 2 |\n\n## 힌트\n\n누적합 + 해시맵을 사용하세요.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,1,1], 2]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1,2,3], 3]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1], 0]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-longest-consec-hash",
+      "categoryId": "cat-hash",
+      "title": "연속 문자열 체인 (Longest Chain)",
+      "content": "## 문제\n\n단어 배열 `words`에서, 한 글자를 추가해 다른 단어를 만들 수 있는 **가장 긴 체인**의 길이를 반환하세요.\n\n체인: 각 단어가 이전 단어에 한 글자를 추가한 형태\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"a\",\"b\",\"ba\",\"bca\",\"bda\",\"bdca\"] | 4 |\n| [\"xbc\",\"pcxbcf\",\"xb\",\"cxbc\",\"pcxbc\"] | 5 |\n\n## 힌트\n\n길이 순 정렬 후, 각 단어에서 한 글자씩 빼며 해시맵 조회.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(words) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[\"a\",\"b\",\"ba\",\"bca\",\"bda\",\"bdca\"]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[[\"xbc\",\"pcxbcf\",\"xb\",\"cxbc\",\"pcxbc\"]]",
+          "expectedOutput": "5"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-word-pattern",
+      "categoryId": "cat-hash",
+      "title": "단어 패턴 (Word Pattern)",
+      "content": "## 문제\n\n패턴 문자열 `pattern`과 공백으로 구분된 문자열 `s`가 주어졌을 때, `s`의 단어들이 `pattern`과 같은 패턴을 따르는지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"abba\", \"dog cat cat dog\" | true |\n| \"abba\", \"dog cat cat fish\" | false |\n| \"aaaa\", \"dog cat cat dog\" | false |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(pattern, s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"abba\", \"dog cat cat dog\"]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"abba\", \"dog cat cat fish\"]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"aaaa\", \"dog cat cat dog\"]",
+          "expectedOutput": "false"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-binary-search",
+      "categoryId": "cat-search",
+      "title": "이진 탐색 (Binary Search)",
+      "content": "## 문제\n\n정렬된 정수 배열 `nums`와 `target`이 주어졌을 때, `target`의 인덱스를 반환하세요. 없으면 -1을 반환하세요.\n\n**O(log n) 시간 복잡도로 풀어야 합니다.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums=[-1,0,3,5,9,12], target=9 | 4 |\n| nums=[-1,0,3,5,9,12], target=2 | -1 |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(nums, target) {\n  // 이진 탐색을 구현하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[-1,0,3,5,9,12], 9]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[[-1,0,3,5,9,12], 2]",
+          "expectedOutput": "-1"
+        },
+        {
+          "id": "tc3",
+          "input": "[[5], 5]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-first-last-pos",
+      "categoryId": "cat-search",
+      "title": "첫 번째와 마지막 위치 (First and Last Position)",
+      "content": "## 문제\n\n정렬된 배열 `nums`에서 `target`의 시작/끝 인덱스를 `[start, end]`로 반환하세요. 없으면 `[-1, -1]`.\n\n**O(log n)으로 풀어야 합니다.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums=[5,7,7,8,8,10], target=8 | [3,4] |\n| nums=[5,7,7,8,8,10], target=6 | [-1,-1] |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(nums, target) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[5,7,7,8,8,10], 8]",
+          "expectedOutput": "[3,4]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[5,7,7,8,8,10], 6]",
+          "expectedOutput": "[-1,-1]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[], 0]",
+          "expectedOutput": "[-1,-1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-sqrt",
+      "categoryId": "cat-search",
+      "title": "제곱근 구하기 (Integer Square Root)",
+      "content": "## 문제\n\n음이 아닌 정수 `x`의 정수 제곱근을 반환하세요 (소수점 버림).\n\n**내장 함수 Math.sqrt 사용 금지. 이진 탐색으로 풀어보세요.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 4 | 2 |\n| 8 | 2 |\n| 0 | 0 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(x) {\n  // Math.sqrt 없이 이진 탐색으로 풀어보세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[4]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[8]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc3",
+          "input": "[0]",
+          "expectedOutput": "0"
+        },
+        {
+          "id": "tc4",
+          "input": "[1]",
+          "expectedOutput": "1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-search-2d",
+      "categoryId": "cat-search",
+      "title": "2D 행렬 탐색 (Search 2D Matrix)",
+      "content": "## 문제\n\n각 행이 정렬되어 있고, 각 행의 첫 번째 원소가 이전 행의 마지막 원소보다 큰 `m x n` 행렬에서 `target`이 존재하는지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| matrix=[[1,3,5,7],[10,11,16,20],[23,30,34,60]], target=3 | true |\n| matrix=[[1,3,5,7],[10,11,16,20],[23,30,34,60]], target=13 | false |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(matrix, target) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[1,3,5,7],[10,11,16,20],[23,30,34,60]], 3]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[1,3,5,7],[10,11,16,20],[23,30,34,60]], 13]",
+          "expectedOutput": "false"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-find-peak",
+      "categoryId": "cat-search",
+      "title": "봉우리 원소 (Find Peak Element)",
+      "content": "## 문제\n\n배열 `nums`에서 봉우리 원소의 인덱스를 반환하세요. 봉우리란 이웃보다 큰 원소입니다. 여러 개면 아무거나 반환.\n\n`nums[-1] = nums[n] = -∞`로 가정합니다. **O(log n)으로 풀어보세요.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,3,1] | 2 |\n| [1,2,1,3,5,6,4] | 5 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,3,1]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1]]",
+          "expectedOutput": "0"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1,2]]",
+          "expectedOutput": "1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-search-rotated",
+      "categoryId": "cat-search",
+      "title": "회전 배열 탐색 (Search in Rotated Array)",
+      "content": "## 문제\n\n오름차순 정렬 후 한 지점에서 회전된 배열 `nums`에서 `target`의 인덱스를 반환하세요. 없으면 -1.\n\n**O(log n)으로 풀어야 합니다.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| nums=[4,5,6,7,0,1,2], target=0 | 4 |\n| nums=[4,5,6,7,0,1,2], target=3 | -1 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(nums, target) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[4,5,6,7,0,1,2], 0]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[[4,5,6,7,0,1,2], 3]",
+          "expectedOutput": "-1"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1], 0]",
+          "expectedOutput": "-1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-find-min-rotated",
+      "categoryId": "cat-search",
+      "title": "회전 배열 최솟값 (Find Min in Rotated Array)",
+      "content": "## 문제\n\n오름차순 정렬 후 회전된 배열에서 최솟값을 반환하세요. 중복 없음.\n\n**O(log n)으로 풀어야 합니다.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [3,4,5,1,2] | 1 |\n| [4,5,6,7,0,1,2] | 0 |\n| [11,13,15,17] | 11 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[3,4,5,1,2]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc2",
+          "input": "[[4,5,6,7,0,1,2]]",
+          "expectedOutput": "0"
+        },
+        {
+          "id": "tc3",
+          "input": "[[11,13,15,17]]",
+          "expectedOutput": "11"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-cut-wood",
+      "categoryId": "cat-search",
+      "title": "나무 자르기 (Cut Wood - Parametric Search)",
+      "content": "## 문제\n\n나무 높이 배열 `trees`와 필요한 나무 길이 `m`이 주어집니다. 절단기 높이 `h`로 잘랐을 때, `h`보다 높은 부분만 가져갈 수 있습니다.\n\n최소 `m`만큼의 나무를 얻을 수 있는 **최대** 절단기 높이를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| trees=[20,15,10,17], m=7 | 15 |\n| trees=[4,42,40,26,46], m=20 | 36 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(trees, m) {\n  // 파라메트릭 서치로 풀어보세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[20,15,10,17], 7]",
+          "expectedOutput": "15"
+        },
+        {
+          "id": "tc2",
+          "input": "[[4,42,40,26,46], 20]",
+          "expectedOutput": "36"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-koko-bananas",
+      "categoryId": "cat-search",
+      "title": "바나나 먹기 (Koko Eating Bananas)",
+      "content": "## 문제\n\n바나나 더미 배열 `piles`와 시간 `h`가 주어집니다. 코코는 매 시간 속도 `k`개로 바나나를 먹습니다 (한 더미씩, 남으면 버림).\n\n`h`시간 내에 모든 바나나를 먹을 수 있는 **최소** 속도 `k`를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| piles=[3,6,7,11], h=8 | 4 |\n| piles=[30,11,23,4,20], h=5 | 30 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(piles, h) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[3,6,7,11], 8]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[[30,11,23,4,20], 5]",
+          "expectedOutput": "30"
+        },
+        {
+          "id": "tc3",
+          "input": "[[30,11,23,4,20], 6]",
+          "expectedOutput": "23"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-median-sorted",
+      "categoryId": "cat-search",
+      "title": "두 정렬 배열의 중앙값 (Median of Two Sorted Arrays)",
+      "content": "## 문제\n\n두 정렬된 배열 `nums1`과 `nums2`의 중앙값을 반환하세요.\n\n**O(log(m+n))으로 풀어야 합니다.**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,3], [2] | 2 |\n| [1,2], [3,4] | 2.5 |",
+      "language": "javascript",
+      "difficulty": 5,
+      "timeLimit": 30,
+      "performanceLimit": 50,
+      "template": "function solution(nums1, nums2) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,3], [2]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[[1,2], [3,4]]",
+          "expectedOutput": "2.5"
+        },
+        {
+          "id": "tc3",
+          "input": "[[0,0], [0,0]]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-fibonacci",
+      "categoryId": "cat-dp",
+      "title": "피보나치 수 (Fibonacci Number)",
+      "content": "## 문제\n\n`n`번째 피보나치 수를 반환하세요.\n\nF(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2)\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 4 | 3 |\n| 10 | 55 |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 5,
+      "performanceLimit": 10,
+      "template": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[4]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[10]",
+          "expectedOutput": "55"
+        },
+        {
+          "id": "tc3",
+          "input": "[0]",
+          "expectedOutput": "0"
+        },
+        {
+          "id": "tc4",
+          "input": "[1]",
+          "expectedOutput": "1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-climbing-stairs",
+      "categoryId": "cat-dp",
+      "title": "계단 오르기 (Climbing Stairs)",
+      "content": "## 문제\n\n`n`개의 계단을 오르는데, 한 번에 1계단 또는 2계단을 오를 수 있습니다. 꼭대기까지 오르는 방법의 수를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 2 | 2 |\n| 3 | 3 |\n| 5 | 8 |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 10,
+      "performanceLimit": 10,
+      "template": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[2]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[3]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc3",
+          "input": "[5]",
+          "expectedOutput": "8"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-house-robber",
+      "categoryId": "cat-dp",
+      "title": "집 도둑 (House Robber)",
+      "content": "## 문제\n\n각 집에 있는 돈의 배열 `nums`가 주어집니다. 인접한 두 집을 동시에 털 수 없을 때, 훔칠 수 있는 최대 금액을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,3,1] | 4 |\n| [2,7,9,3,1] | 12 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,3,1]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[[2,7,9,3,1]]",
+          "expectedOutput": "12"
+        },
+        {
+          "id": "tc3",
+          "input": "[[0]]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-unique-paths",
+      "categoryId": "cat-dp",
+      "title": "고유한 경로 (Unique Paths)",
+      "content": "## 문제\n\n`m x n` 격자의 왼쪽 상단에서 오른쪽 하단까지 이동하는 고유한 경로의 수를 반환하세요. 오른쪽 또는 아래로만 이동 가능.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| m=3, n=7 | 28 |\n| m=3, n=2 | 3 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(m, n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[3, 7]",
+          "expectedOutput": "28"
+        },
+        {
+          "id": "tc2",
+          "input": "[3, 2]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc3",
+          "input": "[1, 1]",
+          "expectedOutput": "1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-coin-change",
+      "categoryId": "cat-dp",
+      "title": "동전 교환 (Coin Change)",
+      "content": "## 문제\n\n동전 종류 배열 `coins`와 금액 `amount`가 주어졌을 때, 해당 금액을 만들 수 있는 **최소 동전 수**를 반환하세요. 불가능하면 -1.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| coins=[1,5,10], amount=11 | 2 |\n| coins=[2], amount=3 | -1 |\n| coins=[1], amount=0 | 0 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(coins, amount) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,5,10], 11]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[[2], 3]",
+          "expectedOutput": "-1"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1], 0]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-lis",
+      "categoryId": "cat-dp",
+      "title": "최장 증가 부분수열 (LIS)",
+      "content": "## 문제\n\n정수 배열 `nums`에서 **최장 순증가 부분수열**의 길이를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [10,9,2,5,3,7,101,18] | 4 |\n| [0,1,0,3,2,3] | 4 |\n| [7,7,7,7,7] | 1 |\n\n설명: [2,3,7,101] 또는 [2,5,7,101]이 길이 4인 LIS.",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[10,9,2,5,3,7,101,18]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[[0,1,0,3,2,3]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc3",
+          "input": "[[7,7,7,7,7]]",
+          "expectedOutput": "1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-knapsack",
+      "categoryId": "cat-dp",
+      "title": "0/1 배낭 문제 (Knapsack)",
+      "content": "## 문제\n\n물건의 무게 배열 `weights`, 가치 배열 `values`, 배낭 용량 `capacity`가 주어집니다. 각 물건은 한 번만 선택 가능할 때, 배낭에 넣을 수 있는 최대 가치를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| weights=[1,3,4,5], values=[1,4,5,7], capacity=7 | 9 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(weights, values, capacity) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,3,4,5], [1,4,5,7], 7]",
+          "expectedOutput": "9"
+        },
+        {
+          "id": "tc2",
+          "input": "[[2,3,4], [3,4,5], 5]",
+          "expectedOutput": "7"
+        },
+        {
+          "id": "tc3",
+          "input": "[[10], [100], 5]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-lcs",
+      "categoryId": "cat-dp",
+      "title": "최장 공통 부분수열 (LCS)",
+      "content": "## 문제\n\n두 문자열 `text1`과 `text2`의 **최장 공통 부분수열(LCS)**의 길이를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"abcde\", \"ace\" | 3 |\n| \"abc\", \"abc\" | 3 |\n| \"abc\", \"def\" | 0 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(text1, text2) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"abcde\", \"ace\"]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"abc\", \"abc\"]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"abc\", \"def\"]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-edit-distance",
+      "categoryId": "cat-dp",
+      "title": "편집 거리 (Edit Distance)",
+      "content": "## 문제\n\n두 문자열 `word1`과 `word2`를 같게 만들기 위한 최소 연산 수를 반환하세요.\n\n허용 연산: 삽입, 삭제, 교체 (각 1회)\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"horse\", \"ros\" | 3 |\n| \"intention\", \"execution\" | 5 |",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 25,
+      "performanceLimit": 50,
+      "template": "function solution(word1, word2) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"horse\", \"ros\"]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"intention\", \"execution\"]",
+          "expectedOutput": "5"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"\", \"abc\"]",
+          "expectedOutput": "3"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-word-break",
+      "categoryId": "cat-dp",
+      "title": "단어 분리 (Word Break)",
+      "content": "## 문제\n\n문자열 `s`와 사전 `wordDict`가 주어졌을 때, `s`를 사전의 단어들로 분리할 수 있는지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| s=\"leetcode\", wordDict=[\"leet\",\"code\"] | true |\n| s=\"applepenapple\", wordDict=[\"apple\",\"pen\"] | true |\n| s=\"catsandog\", wordDict=[\"cats\",\"dog\",\"sand\",\"and\",\"cat\"] | false |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(s, wordDict) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"leetcode\", [\"leet\",\"code\"]]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"applepenapple\", [\"apple\",\"pen\"]]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"catsandog\", [\"cats\",\"dog\",\"sand\",\"and\",\"cat\"]]",
+          "expectedOutput": "false"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-num-islands",
+      "categoryId": "cat-graph",
+      "title": "섬의 개수 (Number of Islands)",
+      "content": "## 문제\n\n`1`(땅)과 `0`(물)으로 이루어진 2D 격자에서 섬의 개수를 반환하세요. 섬이란 상하좌우로 연결된 1의 집합입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[\"1\",\"1\",\"1\"],[\"0\",\"1\",\"0\"],[\"1\",\"1\",\"1\"]] | 1 |\n| [[\"1\",\"1\",\"0\"],[\"0\",\"0\",\"0\"],[\"0\",\"0\",\"1\"]] | 2 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(grid) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[\"1\",\"1\",\"1\"],[\"0\",\"1\",\"0\"],[\"1\",\"1\",\"1\"]]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[\"1\",\"1\",\"0\"],[\"0\",\"0\",\"0\"],[\"0\",\"0\",\"1\"]]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc3",
+          "input": "[[[\"0\"]]]",
+          "expectedOutput": "0"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-flood-fill",
+      "categoryId": "cat-graph",
+      "title": "플러드 필 (Flood Fill)",
+      "content": "## 문제\n\n2D 이미지(정수 2D 배열), 시작 좌표 `[sr, sc]`, 새 색상 `color`가 주어집니다. 시작 위치와 같은 색으로 연결된(상하좌우) 모든 픽셀을 새 색상으로 칠한 결과를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| image=[[1,1,1],[1,1,0],[1,0,1]], sr=1, sc=1, color=2 | [[2,2,2],[2,2,0],[2,0,1]] |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 15,
+      "performanceLimit": 30,
+      "template": "function solution(image, sr, sc, color) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[1,1,1],[1,1,0],[1,0,1]], 1, 1, 2]",
+          "expectedOutput": "[[2,2,2],[2,2,0],[2,0,1]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[0,0,0],[0,0,0]], 0, 0, 0]",
+          "expectedOutput": "[[0,0,0],[0,0,0]]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-connected-comp",
+      "categoryId": "cat-graph",
+      "title": "연결 요소 개수 (Connected Components)",
+      "content": "## 문제\n\n`n`개의 노드(0~n-1)와 간선 배열 `edges`로 이루어진 무방향 그래프에서 연결 요소의 개수를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| n=5, edges=[[0,1],[1,2],[3,4]] | 2 |\n| n=5, edges=[[0,1],[1,2],[2,3],[3,4]] | 1 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(n, edges) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[5, [[0,1],[1,2],[3,4]]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc2",
+          "input": "[5, [[0,1],[1,2],[2,3],[3,4]]]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc3",
+          "input": "[3, []]",
+          "expectedOutput": "3"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-find-path",
+      "categoryId": "cat-graph",
+      "title": "경로 탐색 (Find Path)",
+      "content": "## 문제\n\n`n`개의 노드와 간선 배열 `edges` (무방향 그래프)에서 `source`부터 `destination`까지 경로가 있는지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| n=3, edges=[[0,1],[1,2],[2,0]], source=0, dest=2 | true |\n| n=6, edges=[[0,1],[0,2],[3,5],[5,4],[4,3]], source=0, dest=5 | false |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 50,
+      "template": "function solution(n, edges, source, destination) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[3, [[0,1],[1,2],[2,0]], 0, 2]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[6, [[0,1],[0,2],[3,5],[5,4],[4,3]], 0, 5]",
+          "expectedOutput": "false"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-detect-cycle",
+      "categoryId": "cat-graph",
+      "title": "사이클 감지 (Detect Cycle)",
+      "content": "## 문제\n\n`n`개의 노드와 **방향** 간선 배열 `edges` (`[from, to]`)로 이루어진 그래프에서 사이클이 있는지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| n=4, edges=[[0,1],[1,2],[2,0],[2,3]] | true |\n| n=4, edges=[[0,1],[1,2],[2,3]] | false |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(n, edges) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[4, [[0,1],[1,2],[2,0],[2,3]]]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[4, [[0,1],[1,2],[2,3]]]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[1, []]",
+          "expectedOutput": "false"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-topological-sort",
+      "categoryId": "cat-graph",
+      "title": "위상 정렬 (Topological Sort)",
+      "content": "## 문제\n\n`n`개의 노드와 방향 간선 `edges` (`[from, to]` = from을 먼저 해야 to 가능)가 주어졌을 때, 위상 정렬 순서를 반환하세요. 불가능하면(사이클) 빈 배열.\n\n여러 답이 가능하면 사전순으로 가장 빠른 것을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| n=4, edges=[[1,0],[2,0],[3,1],[3,2]] | [3,1,2,0] |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(n, edges) {\n  // 위상 정렬 결과를 반환하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[4, [[1,0],[2,0],[3,1],[3,2]]]",
+          "expectedOutput": "[3,1,2,0]"
+        },
+        {
+          "id": "tc2",
+          "input": "[2, [[1,0]]]",
+          "expectedOutput": "[1,0]"
+        },
+        {
+          "id": "tc3",
+          "input": "[2, [[0,1],[1,0]]]",
+          "expectedOutput": "[]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-bipartite",
+      "categoryId": "cat-graph",
+      "title": "이분 그래프 (Bipartite Graph)",
+      "content": "## 문제\n\n무방향 그래프가 인접 리스트 형태로 주어졌을 때, 이분 그래프인지 판별하세요.\n\n이분 그래프: 모든 노드를 두 그룹으로 나눌 수 있고, 같은 그룹의 노드끼리는 간선이 없는 그래프.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[1,2,3],[0,2],[0,1,3],[0,2]] | false |\n| [[1,3],[0,2],[1,3],[0,2]] | true |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(graph) {\n  // 이분 그래프인지 판별하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[1,2,3],[0,2],[0,1,3],[0,2]]]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[1,3],[0,2],[1,3],[0,2]]]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-maze",
+      "categoryId": "cat-graph",
+      "title": "미로 탐색 (Maze Solver)",
+      "content": "## 문제\n\n`0`(통로)과 `1`(벽)로 이루어진 2D 미로에서 `start`에서 `end`까지의 **최단 경로 길이**(이동 횟수)를 반환하세요. 도달 불가능하면 -1.\n\n상하좌우로만 이동 가능합니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| maze=[[0,0,0],[1,1,0],[0,0,0]], start=[0,0], end=[2,2] | 4 |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(maze, start, end) {\n  // BFS로 최단 경로를 구하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[[0,0,0],[1,1,0],[0,0,0]], [0,0], [2,2]]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[[[0,1],[0,0]], [0,0], [1,1]]",
+          "expectedOutput": "2"
+        },
+        {
+          "id": "tc3",
+          "input": "[[[0,1],[1,0]], [0,0], [1,1]]",
+          "expectedOutput": "-1"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-course-schedule",
+      "categoryId": "cat-graph",
+      "title": "수강 스케줄 (Course Schedule)",
+      "content": "## 문제\n\n`numCourses`개의 과목과 선수 과목 관계 `prerequisites` (`[a,b]` = b를 먼저 들어야 a 수강 가능)가 주어집니다. 모든 과목을 수강할 수 있는지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| numCourses=2, prerequisites=[[1,0]] | true |\n| numCourses=2, prerequisites=[[1,0],[0,1]] | false |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 50,
+      "template": "function solution(numCourses, prerequisites) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[2, [[1,0]]]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[2, [[1,0],[0,1]]]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[3, [[0,1],[0,2],[1,2]]]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-shortest-path",
+      "categoryId": "cat-graph",
+      "title": "최단 경로 (Shortest Path - Dijkstra)",
+      "content": "## 문제\n\n`n`개의 노드와 가중치 있는 간선 `edges` (`[from, to, weight]`)로 이루어진 방향 그래프에서, 노드 `src`에서 각 노드까지의 최단 거리 배열을 반환하세요. 도달 불가능하면 -1.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| n=4, edges=[[0,1,1],[0,2,4],[1,2,2],[2,3,1]], src=0 | [0,1,3,4] |",
+      "language": "javascript",
+      "difficulty": 4,
+      "timeLimit": 25,
+      "performanceLimit": 100,
+      "template": "function solution(n, edges, src) {\n  // 다익스트라 알고리즘을 구현하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[4, [[0,1,1],[0,2,4],[1,2,2],[2,3,1]], 0]",
+          "expectedOutput": "[0,1,3,4]"
+        },
+        {
+          "id": "tc2",
+          "input": "[3, [[0,1,5]], 0]",
+          "expectedOutput": "[0,5,-1]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-fizzbuzz",
+      "categoryId": "cat-math",
+      "title": "FizzBuzz",
+      "content": "## 문제\n\n1부터 `n`까지의 각 숫자에 대해:\n- 3의 배수면 \"Fizz\"\n- 5의 배수면 \"Buzz\"\n- 15의 배수면 \"FizzBuzz\"\n- 그 외에는 숫자 문자열\n\n결과 배열을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 5 | [\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"] |\n| 15 | [\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\",\"Fizz\",\"7\",\"8\",\"Fizz\",\"Buzz\",\"11\",\"Fizz\",\"13\",\"14\",\"FizzBuzz\"] |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 5,
+      "performanceLimit": 10,
+      "template": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[5]",
+          "expectedOutput": "[\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"]"
+        },
+        {
+          "id": "tc2",
+          "input": "[3]",
+          "expectedOutput": "[\"1\",\"2\",\"Fizz\"]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-is-prime",
+      "categoryId": "cat-math",
+      "title": "소수 판별 (Is Prime)",
+      "content": "## 문제\n\n정수 `n`이 소수인지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 7 | true |\n| 4 | false |\n| 1 | false |",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 5,
+      "performanceLimit": 10,
+      "template": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[7]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[4]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[1]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc4",
+          "input": "[2]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-gcd",
+      "categoryId": "cat-math",
+      "title": "최대공약수 (GCD)",
+      "content": "## 문제\n\n두 양의 정수 `a`, `b`의 최대공약수(GCD)를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 12, 8 | 4 |\n| 7, 3 | 1 |\n| 100, 75 | 25 |\n\n## 힌트\n\n유클리드 호제법을 사용하세요.",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 5,
+      "performanceLimit": 10,
+      "template": "function solution(a, b) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[12, 8]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[7, 3]",
+          "expectedOutput": "1"
+        },
+        {
+          "id": "tc3",
+          "input": "[100, 75]",
+          "expectedOutput": "25"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-power-of-two",
+      "categoryId": "cat-math",
+      "title": "2의 거듭제곱 (Power of Two)",
+      "content": "## 문제\n\n정수 `n`이 2의 거듭제곱인지 판별하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 1 | true |\n| 16 | true |\n| 3 | false |\n| 0 | false |\n\n## 힌트\n\n비트 연산을 활용해보세요: `n & (n - 1) === 0`",
+      "language": "javascript",
+      "difficulty": 1,
+      "timeLimit": 5,
+      "performanceLimit": 10,
+      "template": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[1]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[16]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc3",
+          "input": "[3]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc4",
+          "input": "[0]",
+          "expectedOutput": "false"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-roman-to-int",
+      "categoryId": "cat-math",
+      "title": "로마 숫자 → 정수 (Roman to Integer)",
+      "content": "## 문제\n\n로마 숫자 문자열을 정수로 변환하세요.\n\nI=1, V=5, X=10, L=50, C=100, D=500, M=1000\n\n작은 값이 큰 값 앞에 오면 뺍니다 (IV=4, IX=9 등).\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| \"III\" | 3 |\n| \"LVIII\" | 58 |\n| \"MCMXCIV\" | 1994 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[\"III\"]",
+          "expectedOutput": "3"
+        },
+        {
+          "id": "tc2",
+          "input": "[\"LVIII\"]",
+          "expectedOutput": "58"
+        },
+        {
+          "id": "tc3",
+          "input": "[\"MCMXCIV\"]",
+          "expectedOutput": "1994"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-sieve",
+      "categoryId": "cat-math",
+      "title": "에라토스테네스의 체 (Count Primes)",
+      "content": "## 문제\n\n`n`보다 작은 소수의 개수를 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 10 | 4 |\n| 0 | 0 |\n| 1 | 0 |\n\n## 힌트\n\n에라토스테네스의 체를 사용하세요.",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 15,
+      "performanceLimit": 100,
+      "template": "function solution(n) {\n  // 에라토스테네스의 체를 구현하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[10]",
+          "expectedOutput": "4"
+        },
+        {
+          "id": "tc2",
+          "input": "[0]",
+          "expectedOutput": "0"
+        },
+        {
+          "id": "tc3",
+          "input": "[20]",
+          "expectedOutput": "8"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-happy-number",
+      "categoryId": "cat-math",
+      "title": "행복한 수 (Happy Number)",
+      "content": "## 문제\n\n수 `n`이 행복한 수인지 판별하세요. 각 자릿수의 제곱합을 반복하여 1이 되면 행복한 수입니다.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 19 | true |\n| 2 | false |\n\n설명: 19 → 1²+9²=82 → 8²+2²=68 → 6²+8²=100 → 1²=1 ✓",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[19]",
+          "expectedOutput": "true"
+        },
+        {
+          "id": "tc2",
+          "input": "[2]",
+          "expectedOutput": "false"
+        },
+        {
+          "id": "tc3",
+          "input": "[1]",
+          "expectedOutput": "true"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-permutations",
+      "categoryId": "cat-math",
+      "title": "순열 (Permutations)",
+      "content": "## 문제\n\n서로 다른 정수 배열 `nums`의 모든 순열을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [1,2,3] | [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] |\n| [0,1] | [[0,1],[1,0]] |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 100,
+      "template": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[[1,2,3]]",
+          "expectedOutput": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[[0,1]]",
+          "expectedOutput": "[[0,1],[1,0]]"
+        },
+        {
+          "id": "tc3",
+          "input": "[[1]]",
+          "expectedOutput": "[[1]]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-combinations",
+      "categoryId": "cat-math",
+      "title": "조합 (Combinations)",
+      "content": "## 문제\n\n1부터 `n`까지의 수 중 `k`개를 선택하는 모든 조합을 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| n=4, k=2 | [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]] |\n| n=1, k=1 | [[1]] |",
+      "language": "javascript",
+      "difficulty": 3,
+      "timeLimit": 20,
+      "performanceLimit": 100,
+      "template": "function solution(n, k) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[4, 2]",
+          "expectedOutput": "[[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]"
+        },
+        {
+          "id": "tc2",
+          "input": "[1, 1]",
+          "expectedOutput": "[[1]]"
+        }
+      ],
+      "bookmarked": false,
+      "memo": "",
+      "createdAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "prob-pow-x-n",
+      "categoryId": "cat-math",
+      "title": "거듭제곱 (Pow(x, n))",
+      "content": "## 문제\n\n`x`의 `n`승을 계산하세요. n은 정수입니다 (음수 가능).\n\n**O(log n)으로 풀어보세요 (분할 정복).**\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| x=2, n=10 | 1024 |\n| x=2.1, n=3 | 9.261 |\n| x=2, n=-2 | 0.25 |",
+      "language": "javascript",
+      "difficulty": 2,
+      "timeLimit": 10,
+      "performanceLimit": 30,
+      "template": "function solution(x, n) {\n  // 여기에 코드를 작성하세요\n  \n}",
+      "testCases": [
+        {
+          "id": "tc1",
+          "input": "[2, 10]",
+          "expectedOutput": "1024"
+        },
+        {
+          "id": "tc2",
+          "input": "[2, -2]",
+          "expectedOutput": "0.25"
+        },
+        {
+          "id": "tc3",
+          "input": "[1, 100]",
+          "expectedOutput": "1"
         }
       ],
       "bookmarked": false,
@@ -329,7 +3499,7 @@
     {
       "problemId": "prob-rotate-array",
       "attemptNumber": 1,
-      "code": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  const rm = k % nums.length;\n\n  const arr = Array.from({ length: nums.length }, () => 0);\n\n  for (let i = 0; i < nums.length; i++) {\n    if (i + rm >= nums.length) {\n      arr[i + rm - nums.length] = nums[i];\n    } else {\n      arr[i + rm] = nums[i];\n    }\n  }\n  return arr;\n}",
+      "code": "function solution(nums, k) {\n  const rm = k % nums.length;\n  const arr = Array.from({ length: nums.length }, () => 0);\n  for (let i = 0; i < nums.length; i++) {\n    if (i + rm >= nums.length) {\n      arr[i + rm - nums.length] = nums[i];\n    } else {\n      arr[i + rm] = nums[i];\n    }\n  }\n  return arr;\n}",
       "timeSpent": 1720,
       "executionTime": 0,
       "passed": true,
@@ -365,7 +3535,7 @@
     {
       "problemId": "prob-rotate-array",
       "attemptNumber": 2,
-      "code": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  const rm = k % nums.length;\n  return [...nums.slice(-rm), ...nums.slice(0, nums.length - rm)];\n}",
+      "code": "function solution(nums, k) {\n  const rm = k % nums.length;\n  return [...nums.slice(-rm), ...nums.slice(0, nums.length - rm)];\n}",
       "timeSpent": 1799,
       "executionTime": 0,
       "passed": true,
@@ -401,7 +3571,7 @@
     {
       "problemId": "prob-rotate-array",
       "attemptNumber": 3,
-      "code": "function solution(nums, k) {\n  // 여기에 코드를 작성하세요\n  const rm = k % nums.length;\n  if (rm === 0) {\n    return [...nums];\n  }\n  return [...nums.slice(-rm), ...nums.slice(0, nums.length - rm)];\n}",
+      "code": "function solution(nums, k) {\n  const rm = k % nums.length;\n  if (rm === 0) { return [...nums]; }\n  return [...nums.slice(-rm), ...nums.slice(0, nums.length - rm)];\n}",
       "timeSpent": 1890,
       "executionTime": 0,
       "passed": true,
@@ -433,6 +3603,510 @@
       ],
       "submittedAt": "2026-06-22T02:47:16.935Z",
       "id": "rGFLkKxB1oE"
+    },
+    {
+      "problemId": "prob-palindrome",
+      "attemptNumber": 1,
+      "code": "function solution(s) {\n  const cleand = s.toLowerCase().replace(/[^a-z0-9]/g, '');\n  let left = 0;\n  let right = cleand.length - 1;\n  while(left < right) {\n    if (cleand[left] !== cleand[right]) { return false; }\n    left++; right--;\n  }\n  return true;\n}",
+      "timeSpent": 169,
+      "executionTime": 0.5,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[\"A man, a plan, a canal: Panama\"]",
+          "expected": "true",
+          "actual": "true",
+          "passed": true,
+          "executionTime": 0.5
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[\"race a car\"]",
+          "expected": "false",
+          "actual": "false",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[\" \"]",
+          "expected": "true",
+          "actual": "true",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T01:33:00.361Z",
+      "id": "HcH1HUXaBPQ"
+    },
+    {
+      "problemId": "prob-reverse-string",
+      "attemptNumber": 1,
+      "code": "function solution(s) {\n  return s.reverse();\n}",
+      "timeSpent": 19,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[\"h\",\"e\",\"l\",\"l\",\"o\"]]",
+          "expected": "[\"o\",\"l\",\"l\",\"e\",\"h\"]",
+          "actual": "[\"o\",\"l\",\"l\",\"e\",\"h\"]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]]",
+          "expected": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]",
+          "actual": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T01:36:04.739Z",
+      "id": "FsiCcTVsJNQ"
+    },
+    {
+      "problemId": "prob-reverse-string",
+      "attemptNumber": 2,
+      "code": "function solution(s) {\n  let left = 0;\n  let right = s.length - 1;\n  while (left < right) {\n    [s[left], s[right]] = [s[right], s[left]];\n    left++; right--;\n  }\n  return s;\n}",
+      "timeSpent": 155,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[\"h\",\"e\",\"l\",\"l\",\"o\"]]",
+          "expected": "[\"o\",\"l\",\"l\",\"e\",\"h\"]",
+          "actual": "[\"o\",\"l\",\"l\",\"e\",\"h\"]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]]",
+          "expected": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]",
+          "actual": "[\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T01:38:28.479Z",
+      "id": "GNFYxl6C2b4"
+    },
+    {
+      "problemId": "prob-remove-duplicates",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  return [...new Set(nums)];\n}",
+      "timeSpent": 28,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,1,2]]",
+          "expected": "[1,2]",
+          "actual": "[1,2]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[0,0,1,1,1,2,2,3,3,4]]",
+          "expected": "[0,1,2,3,4]",
+          "actual": "[0,1,2,3,4]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1]]",
+          "expected": "[1]",
+          "actual": "[1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T02:01:45.904Z",
+      "id": "JzTobkOYeuI"
+    },
+    {
+      "problemId": "prob-max-subarray",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  let currentSum = nums[0];\n  let maxSum = nums[0];\n\n  for (let i = 1; i < nums.length; i++) {\n    currentSum = Math.max(nums[i], currentSum + nums[i]);\n    maxSum = Math.max(currentSum, maxSum);\n  }\n  return maxSum;\n}",
+      "timeSpent": 96,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[-2,1,-3,4,-1,2,1,-5,4]]",
+          "expected": "6",
+          "actual": "6",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[1]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[5,4,-1,7,8]]",
+          "expected": "23",
+          "actual": "23",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[-1]]",
+          "expected": "-1",
+          "actual": "-1",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T02:29:39.955Z",
+      "id": "LGGqyz1xUD0"
+    },
+    {
+      "problemId": "prob-max-product-subarray",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n    let maxProd = nums[0];\n    let minProd = nums[0];\n    let result = nums[0];\n\n    for (let i = 1; i < nums.length; i++) {\n      const n = nums[i];\n      const candidates = [n, n * maxProd, n * minProd];\n\n      maxProd = Math.max(...candidates);\n      minProd = Math.min(...candidates);\n\n      result = Math.max(result, maxProd);\n    }\n    return result;\n}",
+      "timeSpent": 188,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[2,3,-2,4]]",
+          "expected": "6",
+          "actual": "6",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[-2,0,-1]]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[-2,3,-4]]",
+          "expected": "24",
+          "actual": "24",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[-2]]",
+          "expected": "-2",
+          "actual": "-2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[[0,2]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T02:40:16.165Z",
+      "id": "TOMNiFiUdn4"
+    },
+    {
+      "problemId": "prob-max-subarray-indices",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // [startIndex, endIndex, maxSum]을 반환하세요\n  let start = 0;\n  let end = 0;\n  let tempStart = 0;\n\n  let currentSum = nums[0];\n  let maxSum = nums[0];\n\n  for (let i = 1; i < nums.length; i++) {\n    if (currentSum < 0) {\n      tempStart = i;\n      currentSum = nums[i];\n    } else {\n      currentSum += nums[i];\n    }\n\n    if (currentSum > maxSum) {\n      maxSum = currentSum;\n      start = tempStart;\n      end = i;\n    }\n  }\n  return [start, end, maxSum];\n}",
+      "timeSpent": 491,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[-2,1,-3,4,-1,2,1,-5,4]]",
+          "expected": "[3,6,6]",
+          "actual": "[3,6,6]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[1]]",
+          "expected": "[0,0,1]",
+          "actual": "[0,0,1]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[5,4,-1,7,8]]",
+          "expected": "[0,4,23]",
+          "actual": "[0,4,23]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[-1,-2,-3]]",
+          "expected": "[0,0,-1]",
+          "actual": "[0,0,-1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T04:19:39.465Z",
+      "id": "rGFoSvnaxcU"
+    },
+    {
+      "problemId": "prob-circular-max-subarray",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // 원형 배열에서의 최대 부분합을 구하세요\n  const totalSum = nums.reduce((arr, cur) => arr + cur, 0);\n\n  let currentSum = nums[0];\n  let maxSum = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    currentSum = Math.max(nums[i], nums[i] + currentSum);\n    maxSum = Math.max(currentSum, maxSum);\n  }\n\n  let currentMin = nums[0];\n  let minSum = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    currentMin = Math.min(nums[i], nums[i] + currentMin);\n    minSum = Math.min(currentMin, minSum);\n  }\n\n  const circularMax = totalSum - minSum;\n\n  if (maxSum < 0) {\n    return maxSum;\n  }\n\n  return Math.max(circularMax, maxSum);\n}",
+      "timeSpent": 218,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,-2,3,-2]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[5,-3,5]]",
+          "expected": "10",
+          "actual": "10",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[-3,-2,-3]]",
+          "expected": "-2",
+          "actual": "-2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[3,-1,2,-1]]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[[3,-2,2,-3]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T04:40:06.916Z",
+      "id": "yPkY_Sp6sYU"
+    },
+    {
+      "problemId": "prob-merge-intervals",
+      "attemptNumber": 1,
+      "code": "function solution(intervals) {\n  // 여기에 코드를 작성하세요\n  if (intervals.length <= 1) {\n    return intervals;\n  }\n\n  intervals.sort((a, b) => a[0] - b[0]);\n  const result = [intervals[0]];\n\n  for (let i = 1; i < intervals.length; i++) {\n    const [curStart, curEnd] = intervals[i];\n    const last = result[result.length - 1];\n\n    if (curStart <= last[1]) {\n      last[1] = Math.max(last[1], curEnd);\n    } else {\n      result.push(intervals[i]);\n    }\n  }\n  return result;\n}",
+      "timeSpent": 619,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[1,3],[2,6],[8,10],[15,18]]]",
+          "expected": "[[1,6],[8,10],[15,18]]",
+          "actual": "[[1,6],[8,10],[15,18]]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[1,4],[4,5]]]",
+          "expected": "[[1,5]]",
+          "actual": "[[1,5]]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,4],[2,3]]]",
+          "expected": "[[1,4]]",
+          "actual": "[[1,4]]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T05:07:19.010Z",
+      "id": "Qxddxc1_JVE"
+    },
+    {
+      "problemId": "prob-insert-interval",
+      "attemptNumber": 1,
+      "code": "function solution(intervals, newInterval) {\n  // 새 구간을 삽입하고 겹치는 구간을 합치세요\n  const result = [];\n  let [newStart, newEnd] = newInterval;\n  const n = intervals.length;\n  let i = 0;\n\n  while (i < n && intervals[i][1] < newStart) {\n    result.push(intervals[i]);\n    i++;\n  }\n  while (i < n && intervals[i][0] <= newEnd) {\n    newStart = Math.min(newStart, intervals[i][0]);\n    newEnd = Math.max(newEnd, intervals[i][1]);\n    i++;\n  }\n  result.push([newStart, newEnd]);\n  while (i < n) {\n    result.push(intervals[i]);\n    i++;\n  }\n  return result;\n}",
+      "timeSpent": 641,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[1,3],[6,9]],[2,5]]",
+          "expected": "[[1,5],[6,9]]",
+          "actual": "[[1,5],[6,9]]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[1,2],[3,5],[6,7],[8,10],[12,16]],[4,8]]",
+          "expected": "[[1,2],[3,10],[12,16]]",
+          "actual": "[[1,2],[3,10],[12,16]]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[],[5,7]]",
+          "expected": "[[5,7]]",
+          "actual": "[[5,7]]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,5]],[2,3]]",
+          "expected": "[[1,5]]",
+          "actual": "[[1,5]]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T05:29:22.787Z",
+      "id": "b_9vBMhGGWw"
+    },
+    {
+      "problemId": "prob-meeting-rooms",
+      "attemptNumber": 1,
+      "code": "function solution(intervals) {\n  // 필요한 최소 회의실 수를 반환하세요\n  const n = intervals.length;\n  if (n <= 0) {\n    return 0;\n  }\n\n  const starts = intervals.map((item) => item[0]).sort((a, b) => a - b);\n  const ends = intervals.map((item) => item[1]).sort((a, b) => a - b);\n\n  let startPtr = 0;\n  let endPtr = 0;\n  let inUse = 0;\n  let maxRooms = 0;\n\n  while (startPtr < n) {\n    if (starts[startPtr] < ends[endPtr]) {\n      inUse++;\n      startPtr++;\n    } else {\n      inUse--;\n      endPtr++;\n    }\n    maxRooms = Math.max(maxRooms, inUse);\n  }\n  return maxRooms;\n}",
+      "timeSpent": 337,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[7,10],[2,4]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,5],[2,6],[3,7],[4,8]]]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[3,6]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[[[1,10],[2,3],[4,5],[6,7]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T05:57:06.482Z",
+      "id": "uBlxTDV0fis"
+    },
+    {
+      "problemId": "prob-meeting-rooms",
+      "attemptNumber": 2,
+      "code": "function solution(intervals) {\n  // 필요한 최소 회의실 수를 반환하세요\n  if (intervals.length === 0) {\n    return 0;\n  }\n  const sorted = [...intervals].sort((a, b) => a[0] - b[0]);\n\n  const heap = new MinHeap();\n  heap.push(sorted[0][1]);\n\n  for (let i = 1; i < sorted.length; i++) {\n    const [start, end] = sorted[i];\n\n    if (heap.peek() <= start) {\n      heap.pop();\n    }\n    heap.push(end);\n  }\n  return heap.size();\n}\n\nclass MinHeap {\n  constructor() {\n    this.heap = [];\n  }\n  size() {\n    return this.heap.length;\n  }\n  peek() {\n    return this.heap[0];\n  }\n  push(val) {\n    this.heap.push(val);\n    let i = this.heap.length - 1;\n    while (i > 0) {\n      const parent = (i - 1) >> 1;\n      if (this.heap[parent] <= this.heap[i]) {\n        break;\n      }\n      [this.heap[parent], this.heap[i]] = [this.heap[i], this.heap[parent]];\n      i = parent;\n    }\n  }\n  pop() {\n    const top = this.heap[0];\n    const last = this.heap.pop();\n    if (this.heap.length > 0) {\n      this.heap[0] = last;\n      let i = 0;\n      const n = this.heap.length;\n      while (true) {\n        const left = 2 * i + 1;\n        const right = 2 * i + 2;\n        let smallest = i;\n        if (left < n && this.heap[left] < this.heap[smallest]) {\n          smallest = left;\n        }\n        if (right < n && this.heap[right] < this.heap[smallest]) {\n          smallest = right;\n        }\n        if (smallest === i) {\n          break;\n        }\n        [this.heap[i], this.heap[smallest]] = [this.heap[smallest], this.heap[i]];\n        i = smallest;\n      }\n    }\n    return top;\n  }\n}",
+      "timeSpent": 557,
+      "executionTime": 0.09999999962747097,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0.09999999962747097
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[7,10],[2,4]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,5],[2,6],[3,7],[4,8]]]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[3,6]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[[[1,10],[2,3],[4,5],[6,7]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-23T07:26:48.544Z",
+      "id": "nbyD4tdWP20"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

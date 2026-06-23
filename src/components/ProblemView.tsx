@@ -19,12 +19,29 @@ function runCode(code: string, testCases: { id: string; input: string; expectedO
         const results = [];
         let totalTime = 0;
 
+        let fn;
+        try {
+          fn = new Function(code + '\\nreturn solution;')();
+        } catch(initErr) {
+          for (const tc of testCases) {
+            results.push({
+              testCaseId: tc.id,
+              input: tc.input,
+              expected: tc.expectedOutput,
+              actual: '',
+              passed: false,
+              executionTime: 0,
+              error: String(initErr),
+            });
+          }
+          self.postMessage({ testResults: results, totalTime: 0 });
+          return;
+        }
+
         for (const tc of testCases) {
           try {
             const args = JSON.parse(tc.input);
             const expected = JSON.parse(tc.expectedOutput);
-
-            const fn = new Function('return (' + code + ')')();
 
             const start = performance.now();
             const actual = fn(...args);
