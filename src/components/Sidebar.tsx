@@ -1,14 +1,29 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { api } from "../api";
-import type { Category, Problem } from "../types";
-import { DIFFICULTY_COLORS } from "../types";
+import type { Category, Problem, Attempt } from "../types";
+import { DIFFICULTY_LABELS } from "../types";
+
+type SolveStatus = "passed" | "failed" | "none";
+
+function buildSolveMap(attempts: Attempt[]): Record<string, SolveStatus> {
+    const map: Record<string, SolveStatus> = {};
+    for (const a of attempts) {
+        if (a.passed) {
+            map[a.problemId] = "passed";
+        } else if (map[a.problemId] !== "passed") {
+            map[a.problemId] = "failed";
+        }
+    }
+    return map;
+}
 
 export default function Sidebar() {
     const [categories, setCategories] = useState<Category[]>([]);
     const [problems, setProblems] = useState<Problem[]>([]);
     const [expanded, setExpanded] = useState<Set<string>>(new Set());
     const [filter, setFilter] = useState("");
+    const [solveMap, setSolveMap] = useState<Record<string, SolveStatus>>({});
     const navigate = useNavigate();
     const { id: selectedId } = useParams();
     const location = useLocation();
@@ -16,11 +31,19 @@ export default function Sidebar() {
     const isMainPage = location.pathname === "/" || location.pathname.startsWith("/problem/");
 
     useEffect(() => {
-        Promise.all([api.getCategories(), api.getProblems()]).then(([cats, probs]) => {
+        Promise.all([api.getCategories(), api.getProblems(), api.getAttempts()]).then(([cats, probs, attempts]) => {
             setCategories(cats);
             setProblems(probs);
-            if (cats.length > 0) setExpanded(new Set(cats.map((c) => c.id)));
+            setSolveMap(buildSolveMap(attempts));
         });
+    }, []);
+
+    useEffect(() => {
+        const handler = () => {
+            api.getAttempts().then((attempts) => setSolveMap(buildSolveMap(attempts)));
+        };
+        window.addEventListener("attempt-submitted", handler);
+        return () => window.removeEventListener("attempt-submitted", handler);
     }, []);
 
     if (!isMainPage) return null;
@@ -76,7 +99,7 @@ export default function Sidebar() {
                         {expanded.has("__bookmarks__") && (
                             <div className="ml-3">
                                 {bookmarked.map((p) => (
-                                    <ProblemItem key={p.id} problem={p} selected={selectedId === p.id} onClick={() => navigate(`/problem/${p.id}`)} />
+                                    <ProblemItem key={p.id} problem={p} selected={selectedId === p.id} solveStatus={solveMap[p.id] || "none"} onClick={() => navigate(`/problem/${p.id}`)} />
                                 ))}
                             </div>
                         )}
@@ -109,7 +132,7 @@ export default function Sidebar() {
                             {expanded.has(cat.id) && (
                                 <div className="ml-3">
                                     {catProblems.map((p) => (
-                                        <ProblemItem key={p.id} problem={p} selected={selectedId === p.id} onClick={() => navigate(`/problem/${p.id}`)} />
+                                        <ProblemItem key={p.id} problem={p} selected={selectedId === p.id} solveStatus={solveMap[p.id] || "none"} onClick={() => navigate(`/problem/${p.id}`)} />
                                     ))}
                                 </div>
                             )}
@@ -121,25 +144,39 @@ export default function Sidebar() {
     );
 }
 
-function ProblemItem({ problem, selected, onClick }: { problem: Problem; selected: boolean; onClick: () => void }) {
-    const difficultyDots = Array.from({ length: 5 }, (_, i) => i < problem.difficulty);
+const SOLVE_ICON: Record<SolveStatus, { color: string; symbol: string; label: string }> = {
+    passed: { color: "text-green-500", symbol: "✓", label: "통과" },
+    failed: { color: "text-red-400", symbol: "✗", label: "실패" },
+    none: { color: "text-c-text-2", symbol: "○", label: "미풀이" },
+};
+
+const DIFF_BG: Record<number, string> = {
+    1: "bg-green-500/15 text-green-600 dark:text-green-400",
+    2: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
+    3: "bg-yellow-500/15 text-yellow-600 dark:text-yellow-400",
+    4: "bg-orange-500/15 text-orange-600 dark:text-orange-400",
+    5: "bg-red-500/15 text-red-600 dark:text-red-400",
+};
+
+function ProblemItem({ problem, selected, solveStatus, onClick }: { problem: Problem; selected: boolean; solveStatus: SolveStatus; onClick: () => void }) {
+    const icon = SOLVE_ICON[solveStatus];
     return (
         <button
             onClick={onClick}
-            className={`flex items-center gap-2 w-full px-3 py-1.5 text-sm rounded-md cursor-pointer border-none text-left transition-colors ${
+            className={`flex items-center gap-1.5 w-full px-3 py-1.5 text-sm rounded-md cursor-pointer border-none text-left transition-colors ${
                 selected ? "bg-c-primary text-white" : "bg-transparent text-c-text hover:bg-c-bg-3"
             }`}
         >
+            <span className={`text-xs font-bold flex-shrink-0 w-4 text-center ${selected ? "text-white" : icon.color}`} title={icon.label}>
+                {icon.symbol}
+            </span>
             <span className="flex-1 truncate">{problem.title}</span>
-            <span className="flex gap-0.5">
-                {difficultyDots.map((filled, i) => (
-                    <span
-                        key={i}
-                        className={`inline-block w-1.5 h-1.5 rounded-full ${
-                            selected ? (filled ? "bg-white" : "bg-white/30") : filled ? DIFFICULTY_COLORS[problem.difficulty].replace("text-", "bg-") : "bg-c-border"
-                        }`}
-                    />
-                ))}
+            <span
+                className={`text-[10px] font-semibold px-1.5 py-0.5 rounded flex-shrink-0 leading-tight ${
+                    selected ? "bg-white/20 text-white" : DIFF_BG[problem.difficulty]
+                }`}
+            >
+                {DIFFICULTY_LABELS[problem.difficulty]}
             </span>
         </button>
     );

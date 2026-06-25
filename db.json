@@ -4107,6 +4107,58 @@
       ],
       "submittedAt": "2026-06-23T07:26:48.544Z",
       "id": "nbyD4tdWP20"
+    },
+    {
+      "problemId": "prob-meeting-rooms",
+      "attemptNumber": 3,
+      "code": "function solution(intervals) {\n  if (intervals.length === 0) { return 0; }\n  const sorted = [...intervals].sort((a, b) => a[0] - b[0]);\n  const heap = new MinHeap();\n  heap.push(sorted[0][1]);\n  for (let i = 1; i < sorted.length; i++) {\n    const [start, end] = sorted[i];\n    if (heap.peek() <= start) {\n      heap.pop();\n    }\n    heap.push(end);\n  }\n  return heap.size();\n}\nclass MinHeap {\n  constructor() { this.heap = []; }\n  size() { return this.heap.length; }\n  peek() { return this.heap[0]; }\n  push(val) {\n    this.heap.push(val);\n    let i = this.heap.length - 1;\n    while (i > 0) {\n      const parent = (i - 1) >> 1;\n      if (this.heap[parent] <= this.heap[i]) { break; }\n      [this.heap[parent], this.heap[i]] = [this.heap[i], this.heap[parent]];\n      i = parent;\n    }\n  }\n  pop() {\n    const top = this.heap[0];\n    const last = this.heap.pop();\n    if (this.heap.length > 0) {\n      this.heap[0] = last;\n      let i = 0;\n      const n = this.heap.length;\n      while (true) {\n        let smallest = i;\n        const left = 2 * i + 1;\n        const right = 2 * i + 2;\n        if (left < n && this.heap[left] < this.heap[smallest]) { smallest = left; }\n        if (right < n && this.heap[right] < this.heap[smallest]) { smallest = right; }\n        if (smallest === i) { break; }\n        i = smallest;\n      }\n    }\n    return top;\n  }\n}",
+      "timeSpent": 0,
+      "executionTime": 0.09999999403953552,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0.09999999403953552
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[7,10],[2,4]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,5],[2,6],[3,7],[4,8]]]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[3,6]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[[[1,10],[2,3],[4,5],[6,7]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-25T06:29:24.272Z",
+      "id": "SZ-B-iex_ZY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

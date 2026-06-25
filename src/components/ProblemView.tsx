@@ -231,6 +231,7 @@ export default function ProblemView() {
 
         const saved = await api.createAttempt({ ...attempt, id: uuidv4() });
         setAttempts((prev) => [...prev, saved]);
+        window.dispatchEvent(new Event("attempt-submitted"));
         setRunning(false);
         setActiveTab("results");
     };
