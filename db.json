@@ -411,7 +411,7 @@
       "id": "prob-meeting-rooms-heap",
       "categoryId": "cat-array",
       "title": "회의실 배정표 - 힙 (Meeting Room Schedule with Heap)",
-      "content": "## 문제\n\n회의 시간 배열 `intervals`가 주어졌을 때 (`intervals[i] = [start, end]`), 각 회의에 **회의실 번호를 배정**하고, 최종 배정 결과를 반환하세요.\n\n### 규칙\n\n1. 회의실은 0번부터 시작합니다.\n2. 회의를 **시작 시간 순**으로 처리합니다.\n3. 현재 비어 있는 회의실이 여러 개면 **번호가 가장 작은 회의실**을 배정합니다.\n4. 비어 있는 회의실이 없으면 **새 회의실을 추가**합니다.\n5. 회의실은 `endTime <= start`이면 비어 있는 것으로 간주합니다.\n\n결과는 각 회의(입력 순서)에 배정된 회의실 번호 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[0,30],[5,10],[15,20]] | [0,1,1] |\n| [[7,10],[2,4]] | [1,0] |\n| [[1,5],[2,6],[6,8]] | [0,1,0] |\n| [[1,3],[3,6],[2,5],[5,7]] | [0,0,1,1] |\n\n설명 (첫 번째 예시):\n- [0,30] → 회의실 0 배정\n- [5,10] → 회의실 0은 30까지 사용 중 → 회의실 1 새로 배정\n- [15,20] → 회의실 1은 10에 끝남(비어있음) → 회의실 1 배정\n\n## 핵심 아이디어\n\n**최소 힙(Min Heap)**에 `(endTime, roomId)`를 저장합니다.\n- 새 회의 시작 시, 힙에서 `endTime <= start`인 방을 모두 꺼내 \"사용 가능\" 풀에 넣습니다.\n- 사용 가능한 방이 있으면 번호가 가장 작은 방을, 없으면 새 방을 배정합니다.\n- 배정 후 `(end, roomId)`를 다시 힙에 넣습니다.\n\n## 힌트\n\nJS에는 내장 힙이 없으므로 직접 MinHeap 클래스를 구현하거나, 배열을 정렬로 대체해도 됩니다.",
+      "content": "## 문제\n\n회의 시간 배열 `intervals`가 주어졌을 때 (`intervals[i] = [start, end]`), 각 회의에 **회의실 번호를 배정**하고, 최종 배정 결과를 반환하세요.\n\n### 규칙\n\n1. 회의실은 0번부터 시작합니다.\n2. 회의를 **시작 시간 순**으로 처리합니다.\n3. 현재 비어 있는 회의실이 여러 개면 **번호가 가장 작은 회의실**을 배정합니다.\n4. 비어 있는 회의실이 없으면 **새 회의실을 추가**합니다.\n5. 회의실은 `endTime <= start`이면 비어 있는 것으로 간주합니다.\n\n결과는 각 회의(입력 순서)에 배정된 회의실 번호 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[0,30],[5,10],[15,20]] | [0,1,1] |\n| [[7,10],[2,4]] | [0,0] |\n| [[1,5],[2,6],[6,8]] | [0,1,0] |\n| [[1,3],[3,6],[2,5],[5,7]] | [0,0,1,1] |\n\n설명 (첫 번째 예시):\n- [0,30] → 회의실 0 배정\n- [5,10] → 회의실 0은 30까지 사용 중 → 회의실 1 새로 배정\n- [15,20] → 회의실 1은 10에 끝남(비어있음) → 회의실 1 배정\n\n## 핵심 아이디어\n\n**최소 힙(Min Heap)**에 `(endTime, roomId)`를 저장합니다.\n- 새 회의 시작 시, 힙에서 `endTime <= start`인 방을 모두 꺼내 \"사용 가능\" 풀에 넣습니다.\n- 사용 가능한 방이 있으면 번호가 가장 작은 방을, 없으면 새 방을 배정합니다.\n- 배정 후 `(end, roomId)`를 다시 힙에 넣습니다.\n\n## 힌트\n\nJS에는 내장 힙이 없으므로 직접 MinHeap 클래스를 구현하거나, 배열을 정렬로 대체해도 됩니다.",
       "language": "javascript",
       "difficulty": 4,
       "timeLimit": 30,
@@ -426,7 +426,7 @@
         {
           "id": "tc2",
           "input": "[[[7,10],[2,4]]]",
-          "expectedOutput": "[1,0]"
+          "expectedOutput": "[0,0]"
         },
         {
           "id": "tc3",
@@ -4159,6 +4159,290 @@
       ],
       "submittedAt": "2026-06-25T06:29:24.272Z",
       "id": "SZ-B-iex_ZY"
+    },
+    {
+      "problemId": "prob-meeting-rooms",
+      "attemptNumber": 4,
+      "code": "function solution(intervals) {\n  // 필요한 최소 회의실 수를 반환하세요\n  if (intervals.length <= 0) { return 0; }\n  const sorted = [...intervals].sort((a, b) => a[0] - b[0]);\n  const heap = new MinHeap();\n  heap.push(sorted[0][1]);\n  for (let i = 1; i < sorted.length; i++) {\n    const [start, end] = sorted[i];\n    if (heap.peek() <= start) {\n      heap.pop();\n    }\n    heap.push(end);\n  }\n  return heap.size();\n}\nclass MinHeap {\n  constructor() { this.heap = []; }\n  size() { return this.heap.length; }\n  peek() { return this.heap[0]; }\n  push(val) {\n    this.heap.push(val);\n    let i = this.heap.length - 1;\n    while (i > 0) {\n      const parent = (i - 1) >> 1;\n      if (this.heap[parent] <= this.heap[i]) {\n        break;\n      }\n      [this.heap[parent], this.heap[i]] = [this.heap[i], this.heap[parent]];\n      i = parent;\n    }\n  }\n  pop() {\n    const top = this.heap[0];\n    const last = this.heap.pop();\n    if (this.heap.length > 0) {\n      this.heap[0] = last;\n      let i = 0;\n      const n = this.heap.length;\n      while (true) {\n        let smallest = i;\n        const left = 2 * i + 1;\n        const right = 2 * i + 2;\n        if (left < n && this.heap[left] < this.heap[smallest]) { smallest = left; }\n        if (right < n && this.heap[right] < this.heap[smallest]) { smallest = right; }\n        if (smallest === i) { break; }\n        [this.heap[smallest], this.heap[i]] = [this.heap[i], this.heap[smallest]];\n        i = smallest;\n      }\n    }\n    return top;\n  }\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000002384185791,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[7,10],[2,4]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,5],[2,6],[3,7],[4,8]]]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[3,6]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[[[1,10],[2,3],[4,5],[6,7]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-26T00:43:29.770Z",
+      "id": "c4CTfj6DbEw"
+    },
+    {
+      "problemId": "prob-meeting-rooms-heap",
+      "attemptNumber": 1,
+      "code": "function solution(intervals) {\n    const indexed = intervals.map((item, idx) => ({ start: item[0], end: item[1], originIdx: idx }));\n  indexed.sort((a, b) => a.start - b.start);\n\n  const heap = new MinHeap();\n  const availableRoomsHeap = new MinHeap();\n  let nextRoomId = 0;\n  const result = new Array(indexed.length);\n\n  for (let i = 0; i < indexed.length; i++) {\n    const { start: curStart, end: curEnd, originIdx } = indexed[i];\n\n    // 끝난 회의들을 모두 비워서 방 번호 회수 (peek 하나만 확인하면 안 됨!)\n    while (heap.size() > 0 && heap.peek().endTime <= curStart) {\n      const finished = heap.pop();\n      availableRoomsHeap.push({ roomId: finished.roomId });\n    }\n\n    // 빈 방이 있으면 재사용, 없으면 새로 발급\n    let roomId;\n    if (availableRoomsHeap.size() > 0) {\n      roomId = availableRoomsHeap.pop().roomId;\n    } else {\n      roomId = nextRoomId++;\n    }\n\n    heap.push({ endTime: curEnd, roomId });\n    result[originIdx] = roomId;\n  }\n  return result;\n}\nclass MinHeap {\n  constructor() { this.heap = []; }\n  size() { return this.heap.length; }\n  peek() { return this.heap[0]; }\n  push(val) {\n    this.heap.push(val);\n    let i = this.heap.length - 1;\n    while (i > 0) {\n      const parent = (i - 1) >> 1;\n      if (this._key(this.heap[parent]) <= this._key(this.heap[i])) {\n        break;\n      }\n      [this.heap[parent], this.heap[i]] = [this.heap[i], this.heap[parent]];\n      i = parent;\n    }\n  } \n  pop() {\n    const top = this.heap[0];\n    const last = this.heap.pop();\n    if (this.heap.length > 0) {\n      this.heap[0] = last;\n      const n = this.heap.length;\n      let i = 0;\n      while (true) {\n        let smallest = i;\n        const left = 2 * i + 1;\n        const right = 2 * i + 2;\n        if (left < n && this._key(this.heap[left]) < this._key(this.heap[smallest])) { smallest = left; }\n        if (right < n && this._key(this.heap[right]) < this._key(this.heap[smallest])) { smallest = right; }\n        if (smallest === i) { break; }\n        [this.heap[smallest], this.heap[i]] = [this.heap[i], this.heap[smallest]];\n        i = smallest;\n      }\n    }\n    return top;\n  }\n  _key(item) {\n    return item.endTime !== undefined ? item.endTime : item.roomId;\n  }\n}",
+      "timeSpent": 0,
+      "executionTime": 0.30000001192092896,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expected": "[0,1,1]",
+          "actual": "[0,1,1]",
+          "passed": true,
+          "executionTime": 0.19999998807907104
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[7,10],[2,4]]]",
+          "expected": "[0,0]",
+          "actual": "[0,0]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,5],[2,6],[6,8]]]",
+          "expected": "[0,1,0]",
+          "actual": "[0,1,0]",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[3,6],[2,5],[5,7]]]",
+          "expected": "[0,0,1,1]",
+          "actual": "[0,0,1,1]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[[[1,2],[2,3],[3,4]]]",
+          "expected": "[0,0,0]",
+          "actual": "[0,0,0]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-26T06:06:11.088Z",
+      "id": "mVIynF8v548"
+    },
+    {
+      "problemId": "prob-bubble-sort",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // 버블 정렬을 구현하세요\n  const n = nums.length;\n  for (let i = 0; i < n - 1; i ++) {\n    for (let j = 0; j < n - 1 - i; j++) {\n      if (nums[j] > nums[j + 1]) {\n        const temp = nums[j];\n        nums[j] = nums[j + 1];\n        nums[j + 1] = temp;\n      }\n    }\n  }\n  return nums;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[64, 34, 25, 12, 22, 11, 90]]",
+          "expected": "[11,12,22,25,34,64,90]",
+          "actual": "[11,12,22,25,34,64,90]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[5, 1, 4, 2, 8]]",
+          "expected": "[1,2,4,5,8]",
+          "actual": "[1,2,4,5,8]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1]]",
+          "expected": "[1]",
+          "actual": "[1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-26T07:02:08.266Z",
+      "id": "JDdq9qir0hY"
+    },
+    {
+      "problemId": "prob-selection-sort",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // 선택 정렬을 구현하세요\n  const n = nums.length;\n  for (let i = 0; i < n - 1; i++) {\n    let minIdx = i;\n    for (let j = i + 1; j < n; j++) {\n      if (nums[j] < nums[minIdx]) {\n        minIdx = j;\n      }\n    }\n    if (minIdx !== i) {\n      let temp = nums[minIdx];\n      nums[minIdx] = nums[i];\n      nums[i] = temp;\n    }\n  }\n  return nums;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.09999999403953552,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[29, 10, 14, 37, 13]]",
+          "expected": "[10,13,14,29,37]",
+          "actual": "[10,13,14,29,37]",
+          "passed": true,
+          "executionTime": 0.09999999403953552
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[3,1,2]]",
+          "expected": "[1,2,3]",
+          "actual": "[1,2,3]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1]]",
+          "expected": "[1]",
+          "actual": "[1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-26T07:30:19.148Z",
+      "id": "I0lsWo84Bvg"
+    },
+    {
+      "problemId": "prob-insertion-sort",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // 삽입 정렬을 구현하세요\n  const n = nums.length;\n  for (i = 1; i < n; i++) {\n    const current = nums[i];\n    let j = i - 1;\n    while (j >= 0 && nums[j] > current) {\n      nums[j + 1] = nums[j];\n      j--;\n    }\n    nums[j + 1] = current;\n  }\n  return nums;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.09999999403953552,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[12, 11, 13, 5, 6]]",
+          "expected": "[5,6,11,12,13]",
+          "actual": "[5,6,11,12,13]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[4,3,2,1]]",
+          "expected": "[1,2,3,4]",
+          "actual": "[1,2,3,4]",
+          "passed": true,
+          "executionTime": 0.09999999403953552
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1,2,3]]",
+          "expected": "[1,2,3]",
+          "actual": "[1,2,3]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-26T07:46:56.392Z",
+      "id": "XS3Mr3SP6DE"
+    },
+    {
+      "problemId": "prob-merge-sorted",
+      "attemptNumber": 1,
+      "code": "function solution(nums1, nums2) {\n  // 여기에 코드를 작성하세요\n  const newArr = [...nums1, ...nums2];\n  return newArr.sort((a, b) => a - b);\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,2,4], [1,3,4]]",
+          "expected": "[1,1,2,3,4,4]",
+          "actual": "[1,1,2,3,4,4]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[], [0]]",
+          "expected": "[0]",
+          "actual": "[0]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[2,5,6], [1,3,7]]",
+          "expected": "[1,2,3,5,6,7]",
+          "actual": "[1,2,3,5,6,7]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-26T07:48:27.896Z",
+      "id": "hFA_tQ2v0To"
+    },
+    {
+      "problemId": "prob-sort-colors",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // 내장 정렬 없이 풀어보세요\n  let low = 0;\n  let mid = 0;\n  let high = nums.length - 1;\n  while (mid <= high) {\n    if (nums[mid] === 0) {\n      [nums[low], nums[mid]] = [nums[mid], nums[low]];\n      low++;\n      mid++;\n    } else if (nums[mid] === 1) {\n      mid++;\n    } else {\n      [nums[mid], nums[high]] = [nums[high], nums[mid]];\n      high--;\n    }\n  }\n  return nums;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[2,0,2,1,1,0]]",
+          "expected": "[0,0,1,1,2,2]",
+          "actual": "[0,0,1,1,2,2]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[2,0,1]]",
+          "expected": "[0,1,2]",
+          "actual": "[0,1,2]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[0]]",
+          "expected": "[0]",
+          "actual": "[0]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-26T08:13:11.153Z",
+      "id": "C4p7ZdvzqxA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
