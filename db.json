@@ -4688,6 +4688,42 @@
       ],
       "submittedAt": "2026-06-29T07:58:17.001Z",
       "id": "xaeZeCqC12M"
+    },
+    {
+      "problemId": "prob-binary-search",
+      "attemptNumber": 1,
+      "code": "function solution(nums, target) {\n  // 이진 탐색을 구현하세요\n  let left = 0;\n  let right = nums.length - 1;\n\n  while (left <= right) {\n    const mid = Math.trunc((left + right) / 2);\n    if (target === nums[mid]) {\n      return mid;\n    }\n    if (nums[mid] < target) {\n      left++;\n    } else {\n      right--;\n    }\n  }\n  return -1;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[-1,0,3,5,9,12], 9]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[-1,0,3,5,9,12], 2]",
+          "expected": "-1",
+          "actual": "-1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[5], 5]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-29T13:34:41.074Z",
+      "id": "uTmNmz7q3ik"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
