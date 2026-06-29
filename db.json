@@ -1402,6 +1402,11 @@
           "id": "tc4",
           "input": "[\"{[]}\"]",
           "expectedOutput": "true"
+        },
+        {
+          "id": "tc5",
+          "input": "[\"((\"]",
+          "expectedOutput": "false"
         }
       ],
       "bookmarked": false,
@@ -1438,7 +1443,7 @@
       "id": "prob-eval-rpn",
       "categoryId": "cat-stack",
       "title": "후위 표기식 계산 (Evaluate RPN)",
-      "content": "## 문제\n\n후위 표기법(역 폴란드 표기법)으로 표현된 수식 `tokens`의 결과를 반환하세요.\n\n유효한 연산자: `+`, `-`, `*`, `/` (정수 나눗셈, 0에 가까운 쪽으로 내림)\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"2\",\"1\",\"+\",\"3\",\"*\"] | 9 |\n| [\"4\",\"13\",\"5\",\"/\",\"+\"] | 6 |\n| [\"10\",\"6\",\"9\",\"3\",\"+\",\"-11\",\"*\",\"/\",\"*\",\"17\",\"+\",\"5\",\"+\"] | 22 |",
+      "content": "## 문제\n\n후위 표기법(역 폴란드 표기법)으로 표현된 수식 `tokens`의 결과를 반환하세요.\n\n유효한 연산자: `+`, `-`, `*`, `/` (정수 나눗셈, 0에 가까운 쪽으로 내림)\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [\"2\",\"1\",\"+\",\"3\",\"*\"] | 9 |\n| [\"4\",\"13\",\"5\",\"/\",\"+\"] | 6 |\n| [\"10\",\"6\",\"9\",\"3\",\"+\",\"-11\",\"\\*\",\"/\",\"\\*\",\"17\",\"+\",\"5\",\"+\"] | 22 |",
       "language": "javascript",
       "difficulty": 2,
       "timeLimit": 15,
@@ -4443,6 +4448,246 @@
       ],
       "submittedAt": "2026-06-26T08:13:11.153Z",
       "id": "C4p7ZdvzqxA"
+    },
+    {
+      "problemId": "prob-valid-parentheses",
+      "attemptNumber": 1,
+      "code": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  const stack = [];\n  const arr = [...s];\n  for (let i = 0; i < arr.length; i++) {\n    const v = arr[i];\n    if ([\"(\", \"{\", \"[\"].includes(v)) {\n      stack.push(v);\n    } else {\n      const target = stack[stack.length - 1];\n      if (target === '(' && v === ')') {\n        stack.pop();\n      } else if (target === '{' && v === '}') {\n        stack.pop();\n      } else if (target === '[' && v === ']') {\n        stack.pop();\n      } else {\n        return false;\n      }\n    }\n  }\n  if (stack.length > 0) {\n    return false;\n  }\n  return true;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.19999998807907104,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[\"()\"]",
+          "expected": "true",
+          "actual": "true",
+          "passed": true,
+          "executionTime": 0.09999996423721313
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[\"()[]{}\"]",
+          "expected": "true",
+          "actual": "true",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[\"(]\"]",
+          "expected": "false",
+          "actual": "false",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[\"{[]}\"]",
+          "expected": "true",
+          "actual": "true",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[\"((\"]",
+          "expected": "false",
+          "actual": "false",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-29T06:25:22.671Z",
+      "id": "kmSIANiqFic"
+    },
+    {
+      "problemId": "prob-valid-parentheses",
+      "attemptNumber": 2,
+      "code": "function solution(s) {\n  // 여기에 코드를 작성하세요\n  if (s.length % 2 !== 0) { return false; }\n  const stack = [];\n  const pairs = { ')': '(', '}': '{', ']': '[' };\n  for (const ch of s) {\n    if (ch in pairs) {\n      if (stack.length === 0 || stack.pop() !== pairs[ch]) {\n        return false;\n      }\n    } else {\n      stack.push(ch);\n    }\n  }\n  return stack.length === 0;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000002384185791,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[\"()\"]",
+          "expected": "true",
+          "actual": "true",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[\"()[]{}\"]",
+          "expected": "true",
+          "actual": "true",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[\"(]\"]",
+          "expected": "false",
+          "actual": "false",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[\"{[]}\"]",
+          "expected": "true",
+          "actual": "true",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[\"((\"]",
+          "expected": "false",
+          "actual": "false",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-29T06:38:38.203Z",
+      "id": "OnkXUZvSPk8"
+    },
+    {
+      "problemId": "prob-min-stack",
+      "attemptNumber": 1,
+      "code": "function solution(operations) {\n  // getMin 결과들을 배열로 반환하세요\n  const stack = [];\n  const minStack = [];\n  const result = [];\n  for (const op of operations) {\n    const [type, val] = op;\n    if (type === \"push\") {\n      stack.push(val);\n      if (minStack.length === 0) {\n        minStack.push(val);\n      } else {\n        minStack.push(Math.min(val, minStack[minStack.length - 1]));\n      }\n    } else if (type === \"pop\") {\n      stack.pop();\n      minStack.pop();\n    } else {\n      result.push(minStack[minStack.length - 1]);\n    }\n  }\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000002384185791,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[\"push\",-2],[\"push\",0],[\"push\",-3],[\"getMin\"],[\"pop\"],[\"getMin\"]]]",
+          "expected": "[-3,-2]",
+          "actual": "[-3,-2]",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[\"push\",1],[\"push\",2],[\"getMin\"],[\"push\",0],[\"getMin\"]]]",
+          "expected": "[1,0]",
+          "actual": "[1,0]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-29T07:09:10.800Z",
+      "id": "VmgIs3c_E1I"
+    },
+    {
+      "problemId": "prob-eval-rpn",
+      "attemptNumber": 1,
+      "code": "function solution(tokens) {\n  // 여기에 코드를 작성하세요\n  const stack = [];\n  const ops = {\n    '+': (a, b) => a + b,\n    '-': (a, b) => a - b,\n    '*': (a, b) => a * b,\n    '/': (a, b) => Math.trunc(a / b),\n  };\n  for (const tk of tokens) {\n    if (tk in ops) {\n      const b = stack.pop();\n      const a = stack.pop();\n      stack.push(ops[tk](a, b));\n    } else {\n      stack.push(Number(tk));\n    }\n  }\n  return stack.pop();\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000002384185791,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[\"2\",\"1\",\"+\",\"3\",\"*\"]]",
+          "expected": "9",
+          "actual": "9",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[\"4\",\"13\",\"5\",\"/\",\"+\"]]",
+          "expected": "6",
+          "actual": "6",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[\"10\",\"6\",\"9\",\"3\",\"+\",\"-11\",\"*\",\"/\",\"*\",\"17\",\"+\",\"5\",\"+\"]]",
+          "expected": "22",
+          "actual": "22",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-29T07:26:59.001Z",
+      "id": "xsi548UsgFM"
+    },
+    {
+      "problemId": "prob-stack-sort",
+      "attemptNumber": 1,
+      "code": "function solution(stack) {\n  const tempStack = [];\n  while (stack.length > 0) {\n    const temp = stack.pop();\n    while (tempStack.length > 0 && tempStack[tempStack.length - 1] < temp) {\n      stack.push(tempStack.pop());\n    }\n    tempStack.push(temp);\n  }\n  while (tempStack.length > 0) {\n    stack.push(tempStack.pop());\n  }  \n  return stack;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[5,3,8,1,2]]",
+          "expected": "[1,2,3,5,8]",
+          "actual": "[1,2,3,5,8]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[3,1,2]]",
+          "expected": "[1,2,3]",
+          "actual": "[1,2,3]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1]]",
+          "expected": "[1]",
+          "actual": "[1]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-29T07:53:51.676Z",
+      "id": "b0b9QeLFnxU"
+    },
+    {
+      "problemId": "prob-freq-count",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // 여기에 코드를 작성하세요\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const n = nums[i];\n    if (map.has(n)) {\n      map.set(n, map.get(n) + 1);\n    } else {\n      map.set(n, 1);\n    }\n  }\n  return [...map.entries()].sort((a, b) => a[1] - b[1]);\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,2,2,3,3,3]]",
+          "expected": "[[1,1],[2,2],[3,3]]",
+          "actual": "[[1,1],[2,2],[3,3]]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[5,5,5]]",
+          "expected": "[[5,3]]",
+          "actual": "[[5,3]]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1]]",
+          "expected": "[[1,1]]",
+          "actual": "[[1,1]]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-29T07:58:17.001Z",
+      "id": "xaeZeCqC12M"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
