@@ -1534,7 +1534,7 @@
     },
     {
       "id": "prob-generate-parentheses",
-      "categoryId": "cat-stack",
+      "categoryId": "cat-search",
       "title": "괄호 생성 (Generate Parentheses)",
       "content": "## 문제\n\n`n`쌍의 괄호로 만들 수 있는 모든 유효한 조합을 반환하세요. 결과는 사전순으로 정렬하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| 3 | [\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"] |\n| 1 | [\"()\"] |",
       "language": "javascript",
@@ -4724,6 +4724,150 @@
       ],
       "submittedAt": "2026-06-29T13:34:41.074Z",
       "id": "uTmNmz7q3ik"
+    },
+    {
+      "problemId": "prob-max-depth",
+      "attemptNumber": 1,
+      "code": "function solution(tree) {\n  // tree는 BFS 순서의 배열입니다\n  // 최대 깊이를 반환하세요\n  if (tree.length === 0 || tree[0] === null) { return 0; }\n  let depth = 0;\n  const queue = [0];\n\n  while (queue.length > 0) {\n    depth++;\n    const levelSize = queue.length;\n    for (let i = 0; i < levelSize; i++) {\n      const idx = queue.shift();\n      const left = 2 * idx + 1;\n      const right = 2 * idx + 2;\n      if (left < tree.length && tree[left] !== null) { queue.push(left); }\n      if (right < tree.length && tree[right] !== null) { queue.push(right); }\n    }\n  }\n  return depth;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[3, 9, 20, null, null, 15, 7]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[1, null, 2]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[]]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-30T00:40:39.194Z",
+      "id": "cm09yRpqTto"
+    },
+    {
+      "problemId": "prob-max-depth",
+      "attemptNumber": 2,
+      "code": "function solution(tree) {\n  // tree는 BFS 순서의 배열입니다\n  // 최대 깊이를 반환하세요\n  function dfs(idx) {\n    if (idx >= tree.length || tree[idx] === null) { return 0; }\n    const left = dfs(2 * idx + 1);\n    const right = dfs(2 * idx + 2);\n    return 1 + Math.max(left, right);\n  }\n  return dfs(0); \n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[3, 9, 20, null, null, 15, 7]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[1, null, 2]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[]]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-30T00:45:20.184Z",
+      "id": "tBNfn-4L-9c"
+    },
+    {
+      "problemId": "prob-daily-temperatures",
+      "attemptNumber": 1,
+      "code": "function solution(temperatures) {\n  // 여기에 코드를 작성하세요\n  const result = new Array(temperatures.length).fill(0);\n  const stack = [];\n  for (let i = 0; i < temperatures.length; i++) {\n    while (stack.length > 0 && temperatures[i] > temperatures[stack.at(-1)]) {\n      const idx = stack.pop();\n      result[idx] = i - idx;\n    }\n    stack.push(i);\n  }\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000002384185791,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[73,74,75,71,69,72,76,73]]",
+          "expected": "[1,1,4,2,1,1,0,0]",
+          "actual": "[1,1,4,2,1,1,0,0]",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[30,40,50,60]]",
+          "expected": "[1,1,1,0]",
+          "actual": "[1,1,1,0]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[30,20,10]]",
+          "expected": "[0,0,0]",
+          "actual": "[0,0,0]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-30T01:02:58.789Z",
+      "id": "yNxlrRDt4_U"
+    },
+    {
+      "problemId": "prob-generate-parentheses",
+      "attemptNumber": 1,
+      "code": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  const result = [];\n  function backtrack(current, open, close) {\n    if (current.length === n * 2) {\n      result.push(current);\n      return;\n    }\n    if (open < n) {\n      backtrack(current + '(', open + 1, close);\n    }\n    if (close < open) {\n      backtrack(current + ')', open, close + 1);\n    }\n  }\n  backtrack('', 0, 0);\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.20000004768371582,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[3]",
+          "expected": "[\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]",
+          "actual": "[\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[1]",
+          "expected": "[\"()\"]",
+          "actual": "[\"()\"]",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[2]",
+          "expected": "[\"(())\",\"()()\"]",
+          "actual": "[\"(())\",\"()()\"]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-06-30T01:47:20.290Z",
+      "id": "wgVP6yO4Tn0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
