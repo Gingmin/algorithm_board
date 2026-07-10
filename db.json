@@ -4966,6 +4966,150 @@
       ],
       "submittedAt": "2026-07-09T04:35:57.518Z",
       "id": "m0cELgGGrGE"
+    },
+    {
+      "problemId": "prob-largest-rectangle",
+      "attemptNumber": 1,
+      "code": "function solution(heights) {\n  // 여기에 코드를 작성하세요\n  let result = 0;\n  const arr = [...heights, 0];\n  const stack = [];\n  const n = arr.length;\n  for (let i = 0; i < n; i++) {\n    while (stack.length > 0 && arr[i] < arr[stack[stack.length - 1]]) {\n      const idx = stack.pop();\n      const j = stack.length > 0 ? stack[stack.length - 1] : -1;\n      const k = arr[idx] * (i - j - 1);\n      result = Math.max(result, k);\n    }\n    stack.push(i);\n  }\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[2,1,5,6,2,3]]",
+          "expected": "10",
+          "actual": "10",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[2,4]]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[1]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-07-10T06:49:12.105Z",
+      "id": "9JeOmDxrP2Q"
+    },
+    {
+      "problemId": "prob-fibonacci",
+      "attemptNumber": 1,
+      "code": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  if (n === 0) { return 0; }\n  if (n === 1) { return 1; }\n  return solution(n - 1) + solution(n - 2);\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000000149011612,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[4]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0.10000000149011612
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[10]",
+          "expected": "55",
+          "actual": "55",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[0]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[1]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-07-10T06:56:53.424Z",
+      "id": "tSEvnxaAGyQ"
+    },
+    {
+      "problemId": "prob-climbing-stairs",
+      "attemptNumber": 1,
+      "code": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  if (n <= 2) { return n; }\n  let prev1 = 2;\n  let prev2 = 1;\n  for (let i = 3; i <= n; i++) {\n    const current = prev1 + prev2;\n    prev2 = prev1;\n    prev1 = current; \n  }\n  return prev1;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.09999999962747097,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[2]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0.09999999962747097
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[3]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[5]",
+          "expected": "8",
+          "actual": "8",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-07-10T07:18:57.603Z",
+      "id": "0RwoyNFyjgM"
+    },
+    {
+      "problemId": "prob-fizzbuzz",
+      "attemptNumber": 1,
+      "code": "function solution(n) {\n  // 여기에 코드를 작성하세요\n  const result = [];\n  for (let i = 1; i <= n; i++) {\n    if (i % 3 === 0) {\n      result.push(\"Fizz\");\n    } else if (i % 5 === 0) {\n      result.push(\"Buzz\");\n    } else if (i % 15 === 0) {\n      result.push(\"FizzBuzz\");\n    } else {\n      result.push(`${i}`);\n    } \n  }\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000000149011612,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[5]",
+          "expected": "[\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"]",
+          "actual": "[\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"]",
+          "passed": true,
+          "executionTime": 0.10000000149011612
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[3]",
+          "expected": "[\"1\",\"2\",\"Fizz\"]",
+          "actual": "[\"1\",\"2\",\"Fizz\"]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-07-10T07:38:58.085Z",
+      "id": "cW3rrlkbGHM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
