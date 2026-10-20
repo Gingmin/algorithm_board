@@ -5110,6 +5110,226 @@
       ],
       "submittedAt": "2026-07-10T07:38:58.085Z",
       "id": "cW3rrlkbGHM"
+    },
+    {
+      "problemId": "prob-overlap-count",
+      "attemptNumber": 1,
+      "code": "function solution(intervals) {\n  // 겹치는 구간 쌍의 개수를 반환하세요\n  const sorted = [...intervals].sort((a, b) => a[0] - b[0]);\n  let count = 0;\n  for (let i = 0; i < sorted.length; i++) {\n    const [curStart, curEnd] = sorted[i];\n    for (let j = i + 1; j < sorted.length; j++) {\n      const [secondStart, secondEnd] = sorted[j];\n      if (curStart < secondEnd && secondStart < curEnd) {\n        count++;\n      }\n    }\n  }\n  return count;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.09999996423721313,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[1,5],[2,6],[3,4],[7,9]]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0.09999996423721313
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[1,2],[3,4],[5,6]]]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,10],[2,3],[4,5]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[2,4],[3,5]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-20T04:29:42.242Z",
+      "id": "zFOIKku5fHw"
+    },
+    {
+      "problemId": "prob-overlap-count",
+      "attemptNumber": 2,
+      "code": "function solution(intervals) {\n  // 겹치는 구간 쌍의 개수를 반환하세요\n  const sorted = [...intervals].sort((a, b) => a[0] - b[0]);\n  let count = 0;\n  for (let i = 0; i < sorted.length; i++) {\n    const curEnd = sorted[i][1];\n    for (let j = i + 1; j < sorted.length; j++) {\n      if (sorted[j][0] >= curEnd) {\n        break;\n      }\n      count++;\n    }\n  }\n  return count;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[1,5],[2,6],[3,4],[7,9]]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[1,2],[3,4],[5,6]]]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,10],[2,3],[4,5]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[2,4],[3,5]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-20T04:33:55.632Z",
+      "id": "KN9mgf4JraA"
+    },
+    {
+      "problemId": "prob-overlap-count",
+      "attemptNumber": 3,
+      "code": "function solution(intervals) {\n  const starts = intervals.map(([s]) => s).sort((a, b) => a - b);\n  const sorted = [...intervals].sort((a, b) => a[0] - b[0]);\n  const n = sorted.length;\n  let count = 0;\n  const lw = (val) => {\n    let lo = 0;\n    let hi = n;\n    while (lo < hi) {\n      const mid = Math.floor((lo + hi) / 2);\n      if (starts[mid] < val) {\n        lo = mid + 1;\n      } else {\n        hi = mid;\n      }\n    }\n    return lo;\n  }\n\n  for (let i = 0; i < n; i++) {\n    const idx = lw(sorted[i][1]);\n    count += idx - i - 1;\n  }\n  return count;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.09999996423721313,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[1,5],[2,6],[3,4],[7,9]]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0.09999996423721313
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[1,2],[3,4],[5,6]]]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,10],[2,3],[4,5]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[2,4],[3,5]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-20T05:22:50.071Z",
+      "id": "SZGVKIsCyDg"
+    },
+    {
+      "problemId": "prob-overlap-count",
+      "attemptNumber": 4,
+      "code": "function solution(intervals) {\n  const starts = [...intervals].map(([s]) => s).sort((a, b) => a - b);\n  const ends = [...intervals].map(([, e]) => e).sort((a, b) => a - b);\n  let count = 0;\n  let e = 0;\n  let active = 0;\n  for (let s = 0; s < starts.length; s++) {\n\n    while (ends[e] <= starts[s]) {\n      active--;\n      e++;\n    }\n    count += active;\n    active++;\n  }\n  return count;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.19999998807907104,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[1,5],[2,6],[3,4],[7,9]]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0.19999998807907104
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[1,2],[3,4],[5,6]]]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1,10],[2,3],[4,5]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,3],[2,4],[3,5]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-20T07:32:35.359Z",
+      "id": "hJoSalOlftE"
+    },
+    {
+      "problemId": "prob-my-calendar",
+      "attemptNumber": 1,
+      "code": "function solution(bookings) {\n  // 각 [start, end] 예약의 성공 여부를 배열로 반환하세요\n  const booked = [];\n  const result = [];\n  for (const [s, e] of bookings) {\n    let overlapped = false;\n\n    for (const [bs, be] of booked) {\n      if (s < be && bs < e) {\n        overlapped = true;\n        break;\n      }\n    }\n    if (!overlapped) {\n      booked.push([s, e]);\n    }\n    result.push(!overlapped);\n  }\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.19999998807907104,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[  [10,20],[15,25],[20,30]  ]]",
+          "expected": "[true,false,true]",
+          "actual": "[true,false,true]",
+          "passed": true,
+          "executionTime": 0.09999996423721313
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[  [1,5],[5,10],[1,3]  ]]",
+          "expected": "[true,true,false]",
+          "actual": "[true,true,false]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[  [1,2],[2,3],[3,4],[1,4]  ]]",
+          "expected": "[true,true,true,false]",
+          "actual": "[true,true,true,false]",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[  [5,10]  ]]",
+          "expected": "[true]",
+          "actual": "[true]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-20T08:44:02.263Z",
+      "id": "_qR_o6YktMc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
