@@ -524,7 +524,7 @@
       "id": "prob-my-calendar-double",
       "categoryId": "cat-array",
       "title": "내 일정 관리자 II - 이중 예약 (My Calendar II)",
-      "content": "## 문제\n\n일정 관리 클래스를 구현하세요. 새로운 일정 `[start, end)`을 추가할 때, **삼중 겹침(triple booking)이 발생하면 추가하지 않고 `false`**, 아니면 추가하고 `true`를 반환합니다.\n\n이중 겹침(double booking)은 허용되지만, 삼중 겹침은 안 됩니다.\n\n함수 `solution(bookings)`은 예약 요청 배열을 받아, 각 요청의 성공 여부를 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[10,20],[50,60],[10,40],[5,15],[5,10],[25,55]] | [true,true,true,true,false,true] |\n\n설명:\n- [5,15]까지 추가하면 [10,15) 구간이 이중 겹침 → 허용\n- [5,10]을 추가하면 [5,10) + [10,20) + [10,40) + [5,15)에서 [5,10) 구간 삼중 겹침 → 거부\n\n## 제약 조건\n\n- `0 <= start < end <= 10^9`\n\n## 힌트\n\n`overlaps` 배열(이중 겹침 구간)을 별도로 관리하세요. 새 일정이 `overlaps`의 어떤 구간과 겹치면 삼중 겹침이 됩니다.",
+      "content": "## 문제\n\n일정 관리 클래스를 구현하세요. 새로운 일정 `[start, end)`을 추가할 때, **삼중 겹침(triple booking)이 발생하면 추가하지 않고 `false`**, 아니면 추가하고 `true`를 반환합니다.\n\n이중 겹침(double booking)은 허용되지만, 삼중 겹침은 안 됩니다.\n\n함수 `solution(bookings)`은 예약 요청 배열을 받아, 각 요청의 성공 여부를 배열로 반환하세요.\n\n## 예시\n\n| 입력 | 출력 |\n|------|------|\n| [[10,20],[50,60],[10,40],[5,15],[5,10],[25,55]] | [true,true,true,false,true,true] |\n\n설명:\n- [5,15]까지 추가하면 [10,15) 구간이 이중 겹침 → 허용\n- [5,10]을 추가하면 [5,10) + [10,20) + [10,40) + [5,15)에서 [5,10) 구간 삼중 겹침 → 거부\n\n## 제약 조건\n\n- `0 <= start < end <= 10^9`\n\n## 힌트\n\n`overlaps` 배열(이중 겹침 구간)을 별도로 관리하세요. 새 일정이 `overlaps`의 어떤 구간과 겹치면 삼중 겹침이 됩니다.",
       "language": "javascript",
       "difficulty": 4,
       "timeLimit": 25,
@@ -534,7 +534,7 @@
         {
           "id": "tc1",
           "input": "[[  [10,20],[50,60],[10,40],[5,15],[5,10],[25,55]  ]]",
-          "expectedOutput": "[true,true,true,true,false,true]"
+          "expectedOutput": "[true,true,true,false,true,true]"
         },
         {
           "id": "tc2",
@@ -648,6 +648,11 @@
           "id": "tc3",
           "input": "[[4,3,2,1,4]]",
           "expectedOutput": "16"
+        },
+        {
+          "id": "tc4",
+          "input": "[[10,1,1,1,10,1]]",
+          "expectedOutput": "40"
         }
       ],
       "bookmarked": false,
@@ -679,6 +684,11 @@
           "id": "tc3",
           "input": "[[[1]]]",
           "expectedOutput": "[1]"
+        },
+        {
+          "id": "tc4",
+          "input": "[[[1,2,3],[4,5,6],[7,8,9],[10,11,12]]]",
+          "expectedOutput": "[1,2,3,6,9,12,11,10,7,4,5,8]"
         }
       ],
       "bookmarked": false,
@@ -5330,6 +5340,254 @@
       ],
       "submittedAt": "2026-10-20T08:44:02.263Z",
       "id": "_qR_o6YktMc"
+    },
+    {
+      "problemId": "prob-my-calendar-double",
+      "attemptNumber": 1,
+      "code": "function solution(bookings) {\n  // 삼중 겹침이 발생하지 않도록 예약하세요\n    const booked = [];\n  const overlaps = [];\n  const result = [];\n  for (const [s, e] of bookings) {\n    let isOverlaps = false;\n    for (const [os, oe] of overlaps) {\n      if (s < oe && os < e) {\n        isOverlaps = true;\n        break;\n      }\n    }\n    if (isOverlaps) {\n      result.push(false);\n      continue;\n    }\n    for (const [bs, be] of booked) {\n      if (s < be && bs < e) {\n        overlaps.push([Math.max(s, bs), Math.min(e, be)]);\n      }\n    }\n    booked.push([s, e]);\n    result.push(true);\n  }\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000002384185791,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[  [10,20],[50,60],[10,40],[5,15],[5,10],[25,55]  ]]",
+          "expected": "[true,true,true,false,true,true]",
+          "actual": "[true,true,true,false,true,true]",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[  [1,5],[1,5],[1,5]  ]]",
+          "expected": "[true,true,false]",
+          "actual": "[true,true,false]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[  [1,3],[3,5],[5,7]  ]]",
+          "expected": "[true,true,true]",
+          "actual": "[true,true,true]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-23T00:48:15.296Z",
+      "id": "99pgtAPbspY"
+    },
+    {
+      "problemId": "prob-min-bike-racks",
+      "attemptNumber": 1,
+      "code": "function solution(rentals) {\n  // 최소 거치대 수를 반환하세요\n  if (rentals.length <= 1) { return 1; }\n  const sorted = [...rentals].sort((a, b) => a[0] - b[0]);\n  const heap = new MinHeap();\n  heap.push(sorted[0][1]);\n  for (let i = 1; i < sorted.length; i++) {\n    const [curStart, curEnd] = sorted[i];\n    if (heap.peek() <= curStart) {\n      heap.pop();\n    }\n    heap.push(curEnd);\n  }\n  return heap.size();\n}\nclass MinHeap {\n  constructor() { this.heap = []; }\n  size() { return this.heap.length; }\n  peek() { return this.heap[0]; }\n  push(val) {\n    this.heap.push(val);\n    let i = this.heap.length - 1;\n    while (i > 0) {\n      const parent = Math.floor((i - 1) / 2);\n      if (this.heap[parent] <= this.heap[i]) {\n        break;\n      }\n      [this.heap[parent], this.heap[i]] = [this.heap[i], this.heap[parent]];\n      i = parent;\n    }\n  }\n  pop() {\n    const top = this.heap[0];\n    const last = this.heap.pop();\n    if (this.heap.length > 0) {\n      this.heap[0] = last;\n      const n = this.heap.length;\n      let i = 0;\n      while (true) {\n        let smallest = i;\n        const left = 2 * i + 1;\n        const right = 2 * i + 2;\n        if (left < n && this.heap[left] < this.heap[smallest]) { smallest = left; }\n        if (right < n && this.heap[right] < this.heap[smallest]) { smallest = right; }\n        if (smallest === i) { break; }\n        [this.heap[smallest], this.heap[i]] = [this.heap[i], this.heap[smallest]];\n        i = smallest;\n      }\n    }\n    return top;\n  }\n}",
+      "timeSpent": 0,
+      "executionTime": 0.19999992847442627,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[0,30],[5,10],[15,20]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[1,2],[3,4],[5,6]]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[0,5],[1,6],[2,7],[3,8]]]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[9,10],[4,9],[5,17]]]",
+          "expected": "2",
+          "actual": "2",
+          "passed": true,
+          "executionTime": 0.09999990463256836
+        },
+        {
+          "testCaseId": "tc5",
+          "input": "[[[1,10],[1,10],[1,10]]]",
+          "expected": "3",
+          "actual": "3",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-23T04:38:47.985Z",
+      "id": "dwrSfWf8VoQ"
+    },
+    {
+      "problemId": "prob-product-except-self",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  // 나눗셈 없이 풀어보세요\n  const n = nums.length;\n  const result = new Array(n).fill(1);\n\n  let left = 1;\n  for (let i = 0; i < n; i++) {\n    result[i] = left;\n    left *= nums[i];\n  }\n  let right = 1;\n  for (let i = n - 1; i >= 0; i--) {\n    result[i] *= right;\n    right *= nums[i];\n  }\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,2,3,4]]",
+          "expected": "[24,12,8,6]",
+          "actual": "[24,12,8,6]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[-1,1,0,-3,3]]",
+          "expected": "[0,0,9,0,0]",
+          "actual": "[0,0,9,0,0]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[2,3]]",
+          "expected": "[3,2]",
+          "actual": "[3,2]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-23T05:48:36.302Z",
+      "id": "sTnYB8VN6UA"
+    },
+    {
+      "problemId": "prob-container-water",
+      "attemptNumber": 1,
+      "code": "function solution(height) {\n  let left = 0;\n  let right = height.length - 1;\n  let max = 0;\n  while (left < right) {\n    const area = Math.min(height[left], height[right]) * (right - left);\n    if (area > max) {\n      max = area;  \n    } \n    if (height[left] < height[right]) {\n      left++;\n    } else {\n      right--;\n    }\n  }\n  return max;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.10000002384185791,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[1,8,6,2,5,4,8,3,7]]",
+          "expected": "49",
+          "actual": "49",
+          "passed": true,
+          "executionTime": 0.10000002384185791
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[1,1]]",
+          "expected": "1",
+          "actual": "1",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[4,3,2,1,4]]",
+          "expected": "16",
+          "actual": "16",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[10,1,1,1,10,1]]",
+          "expected": "40",
+          "actual": "40",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-23T06:51:00.868Z",
+      "id": "_LpobpqJxo4"
+    },
+    {
+      "problemId": "prob-spiral-matrix",
+      "attemptNumber": 1,
+      "code": "function solution(matrix) {\n  const result = [];\n  let top = 0;\n  let bottom = matrix.length - 1;\n  let left = 0;\n  let right = matrix[0].length - 1;\n  while (top <= bottom && left <= right) {\n    for (let i = left; i <= right; i++) { result.push(matrix[top][i]); }\n    top++;\n    for (let i = top; i <= bottom; i++) { result.push(matrix[i][right]); }\n    right--;\n    if (top <= bottom) {\n      for (let i = right; i >= left; i--) { result.push(matrix[bottom][i]); }\n      bottom--;\n    }\n    if (left <= right) {\n      for (let i = bottom; i >= top; i--) { result.push(matrix[i][left]); }\n      left++;\n    }\n  }\n  return result;\n}",
+      "timeSpent": 0,
+      "executionTime": 0.09999990463256836,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[[1,2,3],[4,5,6],[7,8,9]]]",
+          "expected": "[1,2,3,6,9,8,7,4,5]",
+          "actual": "[1,2,3,6,9,8,7,4,5]",
+          "passed": true,
+          "executionTime": 0.09999990463256836
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[[1,2,3,4],[5,6,7,8],[9,10,11,12]]]",
+          "expected": "[1,2,3,4,8,12,11,10,9,5,6,7]",
+          "actual": "[1,2,3,4,8,12,11,10,9,5,6,7]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[[1]]]",
+          "expected": "[1]",
+          "actual": "[1]",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc4",
+          "input": "[[[1,2,3],[4,5,6],[7,8,9],[10,11,12]]]",
+          "expected": "[1,2,3,6,9,12,11,10,7,4,5,8]",
+          "actual": "[1,2,3,6,9,12,11,10,7,4,5,8]",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-23T08:16:53.428Z",
+      "id": "vKG37H27BrM"
+    },
+    {
+      "problemId": "prob-longest-consecutive",
+      "attemptNumber": 1,
+      "code": "function solution(nums) {\n  const set = new Set(nums);\n  let best = 0;\n  for (const x of set) {\n    if (set.has(x - 1)) { continue; }\n    let cur = x;\n    let len = 1;\n    while (set.has(cur + 1)) {\n      cur++;\n      len++;\n    }\n    best = Math.max(best, len);\n  }\n  return best;\n}",
+      "timeSpent": 0,
+      "executionTime": 0,
+      "passed": true,
+      "testResults": [
+        {
+          "testCaseId": "tc1",
+          "input": "[[100,4,200,1,3,2]]",
+          "expected": "4",
+          "actual": "4",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc2",
+          "input": "[[0,3,7,2,5,8,4,6,0,1]]",
+          "expected": "9",
+          "actual": "9",
+          "passed": true,
+          "executionTime": 0
+        },
+        {
+          "testCaseId": "tc3",
+          "input": "[[]]",
+          "expected": "0",
+          "actual": "0",
+          "passed": true,
+          "executionTime": 0
+        }
+      ],
+      "submittedAt": "2026-10-23T08:40:30.612Z",
+      "id": "WTrJ0P9CRtY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
